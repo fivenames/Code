@@ -1,0 +1,31 @@
+// SASS - Syntactically Awesome Stylesheet
+// Sass is a preprocessor scripting language that is interpreted or compiled into CSS.
+// Download Sass and run  sass file.scss:file.css  to compile. href to the compiled CSS file.
+
+// creating variable
+$color: red;
+
+button {
+    color: $color;
+}
+
+// Allow nested CSS, meaning no need to use descendant selector (>) to style the children tags inside of the parent tag.
+    // In CSS, the children tag need to be reference by using syntax like div > li.
+div {
+    li {
+        color: $color;
+    }
+}
+
+// Allow inheritance
+
+// use % to decalre a template
+%templates {
+    font-size: 18px;
+    margin: 20px;
+}
+
+.green {
+    @extend %templates;
+    background-color: green;
+}
