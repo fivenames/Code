@@ -47,7 +47,7 @@ public class Gene {
         return ans;
     }
 
-    public static ArrayList find_all(Gene seq){
+    public static ArrayList<String> find_all(Gene seq){
         // Resizable array, unlike LinkedList
         ArrayList<String> sequences = new ArrayList<String>();
         while(true){
