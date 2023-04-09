@@ -31,7 +31,7 @@ def dollars_to_float(d):
             number = number * 10 + int(digit)
 
 # Unlike C, such that it's possible to store each digit as a char and printing out a string as an array of char is possible, Python do not have data-type char, it only has str.
-# Hence note that the list here is a list of strings. Printing the list will output: "['x', 'y', 'z'...]"
+# Hence note that the list here is a list of strings. str variables store reference(pointers) to the str data, however, str is immutable in Python.
 
 # The join method from the 'str' class takes one argument: the sequence of strings to concatenate. The syntax for using the join method is: separator.join(sequence)
 # 'separator' is the string to use to separate between the elements in the sequence and sequence is the sequence of strings to concatenate. In this case '' is None.

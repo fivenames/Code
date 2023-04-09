@@ -10,6 +10,7 @@ public class Gene {
     }
 
     public String find(){
+        // Similar to Python, String variables store the reference to the string data, but String is immutable in Java.
         String startcodon = "ATG";
         String[] stopcodons = {"TAA", "TAG", "TGA"};
         // Initialise a Map Class Object, implementing a dict data struct by calling HashMap constructor.

@@ -1,24 +1,42 @@
 {
-    "java.project.referencedLibraries": [
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-linux-amd64.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-linux-armv6hf.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-linux-i586.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-macosx-universal.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-windows-amd64.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-windows-i586.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-amd64.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-armv6hf.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-i586.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-macosx-universal.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-windows-amd64.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-windows-i586.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\json4processing.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\libTUIO.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\log4j-1.2.15.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\sqlite-jdbc-3.7.2.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\unfolding.0.9.7-uscd.jar",
-        "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\core.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\core.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-linux-amd64.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-linux-armv6hf.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-linux-i586.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-macosx-universal.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-windows-amd64.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-windows-i586.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-amd64.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-armv6hf.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-i586.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-macosx-universal.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-windows-amd64.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-windows-i586.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\json4processing.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\libTUIO.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\log4j-1.2.15.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\sqlite-jdbc-3.7.2.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\unfolding.0.9.7-uscd.jar"
+        ],
+        "exclude": [
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-linux-armv6hf.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt-natives-linux-i586.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-armv6hf.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-amd64.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-linux-i586.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all-natives-macosx-universal.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\json4processing.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\jogl-all.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\gluegen-rt.jar",
+            "c:\\Users\\liang\\OneDrive\\Documents\\GitHub\\lib\\UCSDUnfoldingMaps\\lib\\log4j-1.2.15.jar"
+        ]
+    },
+    "java.project.sourcePaths": [
+        "java"
+    ],
+    "java.project.outputPath": "java"
 }

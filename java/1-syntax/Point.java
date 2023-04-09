@@ -34,7 +34,7 @@ public class Point {
     // 'main' is a special static method which acts as the execution point of the code.
     public static void main(String[] args){
         // When using 'new', data is created in the heap similar to malloc() in C, ie. the data will not be cleared when function calls return.
-        // the variable p1/p2 are references(pointers) that points to the object instantiated. However, no pointer operations can be carried out in Java.
+        // the variable p1/p2 are references(pointers) that points to the object instantiated (same as Python). However, no pointer operations can be carried out in Java.
         Point p1 = new Point(1, 2);
         Point p2 = new Point(3, 4);
 /*
