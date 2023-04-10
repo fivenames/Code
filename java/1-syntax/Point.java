@@ -1,15 +1,18 @@
-public class Point {
+public class Point // extends (classname) : this will inherit from the super-class, its public methods and public instance variable(private to be accessed with public methods).
+{
     // Instance variable, private indicates that the value of the variable can only be changed with methods within this class. (Encapsulation)
-    // Define a setter method to allow modification of instance variable, define a getter to allow reading of instance variable.
+    // There are keywords like protected as well and also the default(package-private).
     private int x;
     private int y;
+// Define a setter method to allow modification of instance variable, define a getter to allow reading of instance variable.
 
     // Constructor, named the same as the class. Default constructor, no parameter is passed.
     public Point (){
         this.x = 0;
         this.y = 0;
     }
-    // Standard constructor, this is a concept of functional overloading: more than one methods of the same name are declared with differing parameters. (Python does not support)
+    // Standard constructor, this is a concept of functional overloading: more than one method of the same name are declared with differing parameters. (Python does not support)
+    // Overriding in polymophism is sub-class having the same method name and same parameters as the super-class but different implementation, different from overloading.
     public Point (int init_x, int init_y){
         x = init_x;
         y = init_y;
@@ -48,3 +51,18 @@ println() is an instance method of PrintStream class. Hence, this is essentially
         System.out.println(p1.displacement(p2));
     }
 }
+
+/*
+Java compiler rules: 
+
+All super-class will extend from Obejct class, when defining constructor, the compiler will always put super() before any initialisation.
+For eg. the sub-class constructor will call the object() constructor first before calling super() constructor and finally initialisation the sub-class variables.
+
+Sub-class type can be referenced by the super-class type variable.
+In polymorphism, the compiler will only look at the reference to look for the method, eg. ClassA var = ClassB(p), calling var.methods compiler will look at ClassA for the method.
+If no such method is found, compiler will throw an error, if found the code will be compiled.
+However, in runtime, the interpretor can understand that ClassB is the object type, the .methods will be called from ClassB instead.
+Casting can solve the problem, use syntax like ( (ClassB)var ).methods to indicate that the method is from the sub-class.
+*/
+
+// In Java, there are keywords: abstract, final, to describe classes and interfaces to describe methods when it comes to polymorphism.
