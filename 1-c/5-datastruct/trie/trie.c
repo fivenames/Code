@@ -8,7 +8,6 @@ Example, 5 arrays of 26 alphabets link by linked list, to store Harry's data, H-
 Tri has a runtime of O(1) as the size of data, n, does not affect the number of steps to take to find the target.
 */
 
-#include <cs50.h>
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -100,7 +99,10 @@ int main(int argc, char *argv[])
         cursor->is_word = true;
     }
 
-    if (check(get_string("Check word: ")))
+    char *word = malloc(46 * sizeof(char));
+    printf("Check word: ");
+    scanf("%s", word);
+    if (check(word))
     {
         printf("Found!\n");
     }

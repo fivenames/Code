@@ -4,7 +4,6 @@
 int main()
 {
 /*
-A struct is a way to group different data types (int, char..) into a "super variable". It is different from data struct as data struct is a method of storing data (Arrays, tries..).
 A queue is a type of data struct that follows the First In First Out (FIFO) principle, meaning that the first item to be added to the queue will be the first one to be removed.
 A stack is a type of data struct that follows the Last In First Out (LIFO) principle, meaning that the last item to be added to the stack will be the first one to be removed.
 */
@@ -14,7 +13,9 @@ A stack is a type of data struct that follows the Last In First Out (LIFO) princ
         return 1;
     }
 
-    arr[] = {1, 2, 3};
+    arr[0] = 1;
+    arr[1] = 2;
+    arr[2] = 3;
 
     int *temp = malloc(4 * sizeof(int));
     if(temp == NULL)
