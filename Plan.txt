@@ -1,0 +1,31 @@
+Month 0:
+
+Learn C syntax.
+Learn basic data structures and algorithms in C.
+
+Month 1-2:
+
+Learn Python syntax.  (done)
+Study object-oriented programming concepts, such as inheritance, polymorphism, and encapsulation. (done)
+
+Intro to SQL and relational databases. (done)
+Intro to HTML, CSS, and JavaScript for web development. (done)
+Intro to web framework with Flask. (done)
+
+Month 3-4:
+
+Build on Flask and learn a web development framework Django or Ruby on Rails. (current)
+Intro to Artificial Intelligence. (current)
+
+Learn Java object-oriented programming syntax (Done)
+Advanced Data Structures and Algorithms in Java.
+
+Month 5-6:
+
+Learn about software design patterns in Java.
+ 
+Learn C++ syntax.
+
+Month 7:
+
+Learn about cloud computing platforms, such as Amazon Web Services (AWS) and/or Microsoft Azure || Mobile App development
