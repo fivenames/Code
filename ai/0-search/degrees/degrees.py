@@ -91,7 +91,7 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
-    # state is person_id, parent is parent_node, action is the person starred in the same movie(movie_id)
+    # Node.state is person_id, Node.parent is parent_node, Node.action is the action of staring in the same movie(movie_id).
     init_state = Node(source, None, None)
     frontier = QueueFrontier()
     frontier.add(init_state)
