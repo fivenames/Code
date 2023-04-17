@@ -112,7 +112,7 @@ def sheep(n):
         yield '$' * i
 
 # yield actually returns an iterator which steps over one element at a time if looped, similar to the 'reader' iterator obejct created when csv.reader()||csv.DictReader() is called.
-for s in sheep(n):
+for s in sheep(9999999):
     print(s)
 
 ''' END OF CS50P '''
