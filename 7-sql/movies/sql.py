@@ -1,5 +1,6 @@
 import sqlite3
 
+# movies.db is now located in the ai directory
 con = sqlite3.connect("movies.db")
 cur = con.cursor()
 
