@@ -2,6 +2,8 @@
 Tic Tac Toe Player
 """
 
+import random
+
 import math
 
 X = "X"
@@ -29,8 +31,10 @@ def player(board):
         for j in range(3):
             if board[i][j] == X:
                 counter_X += 1
-            else:
+            elif board[i][j] == O:
                 counter_O += 1
+            else:
+                pass
     
     if counter_X + counter_O == 9:
         return None
@@ -96,6 +100,7 @@ def winner(board):
                 winning_counter += 1
 
         # check vertical cases
+    winning_counter = 0
     for i in range(3):
         if winning_counter == 3:
             return X_O
@@ -107,23 +112,27 @@ def winner(board):
                 winning_counter += 1
 
         # check diagonal cases
-    for i, j in range(3):
-        if winning_counter == 3:
-            return X_O
-        winning_counter = 0
+    j = 0
+    winning_counter = 0
+    for i in range(3):
         if board[i][j] == X_O:
             winning_counter += 1
+            j += 1
+        else:
+            break
+    if winning_counter == 3:
+        return X_O
 
     j = 2
+    winning_counter = 0
     for i in range(3):
-        if winning_counter == 3:
-            return X_O
-        winning_counter = 0       
         if board[i][j] == X_O:
             winning_counter += 1
             j -= 1
         else:
             break
+    if winning_counter == 3:
+        return X_O    
     
     return None
         
@@ -159,5 +168,26 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
+    action = actions(board)
+    for act in action:
+        return act
+    
+
+
+def max_value(board):
     if terminal(board):
         return utility(board)
+    score = -1
+    for action in actions(board):
+        score = max(score, min_value(result(board, action)))
+    return score
+
+def min_value(board):
+    if terminal(board):
+        return utility(board)
+    score = 1
+    for action in actions(board):
+        score = min(score, max_value(result(board, action)))
+    return score
+
+
