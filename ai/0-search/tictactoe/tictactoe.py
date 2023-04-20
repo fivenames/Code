@@ -22,14 +22,39 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    raise NotImplementedError
+    counter_X = 0
+    counter_O = 0
 
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] == X:
+                counter_X += 1
+            else:
+                counter_O += 1
+    
+    if counter_X + counter_O == 9:
+        return None
+    elif counter_X - counter_O == 1:
+        return O
+    elif counter_X == counter_O:
+        return X
+    else:
+        raise Exception
 
 def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    raise NotImplementedError
+    action = set()
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] == EMPTY:
+                action.add((i, j))
+            
+    if action == None:
+        return None
+
+    return action
 
 
 def result(board, action):
