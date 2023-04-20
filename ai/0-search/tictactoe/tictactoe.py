@@ -61,32 +61,99 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-    raise NotImplementedError
+    X_O = player(board)
+    i, j = action
+    board[i][j] = X_O
+    
+    return board
 
 
 def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    raise NotImplementedError
+    # check whose turn curerently
+    X_O = player(board)
+    if X_O == X:
+        X_O = O
+    elif X_O == O:
+        X_O = X
 
+    # check if the other party has won:
+        # check horizontal cases
+    for i in range(3):
+        if winning_counter == 3:
+            return X_O
+        winning_counter = 0
+        for j in range(3):
+            if board[i][j] != X_O:
+                break
+            else:
+                winning_counter += 1
 
+        # check vertical cases
+    for i in range(3):
+        if winning_counter == 3:
+            return X_O
+        winning_counter = 0
+        for j in range(3):
+            if board[j][i] != X_O:
+                break
+            else:
+                winning_counter += 1
+
+        # check diagonal cases
+    for i, j in range(3):
+        if winning_counter == 3:
+            return X_O
+        winning_counter = 0
+        if board[i][j] == X_O:
+            winning_counter += 1
+
+    j = 2
+    for i in range(3):
+        if winning_counter == 3:
+            return X_O
+        winning_counter = 0       
+        if board[i][j] == X_O:
+            winning_counter += 1
+            j -= 1
+        else:
+            break
+    
+    return None
+        
+
+         
 def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-    raise NotImplementedError
+    if (winner(board) == None):
+        for i in range(3):
+            for j in range(3):
+                if board[i][j] == EMPTY:
+                    return False
+    
+    return True
 
 
 def utility(board):
     """
     Returns 1 if X has won the game, -1 if O has won, 0 otherwise.
     """
-    raise NotImplementedError
+    X_O = winner(board)
+    if(X_O == X):
+        return 1
+    elif(X_O == O):
+        return -1
+    elif(terminal(board)):
+        return 0
 
 
 def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    raise NotImplementedError
+    if terminal(board):
+        return utility()
