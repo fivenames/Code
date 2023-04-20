@@ -50,10 +50,10 @@ def actions(board):
         for j in range(3):
             if board[i][j] == EMPTY:
                 action.add((i, j))
-            
-    if action == None:
+    
+    if terminal(board):
         return None
-
+            
     return action
 
 
@@ -62,10 +62,13 @@ def result(board, action):
     Returns the board that results from making move (i, j) on the board.
     """
     X_O = player(board)
+    if action not in actions(board):
+        raise Exception("Action invalid")
     i, j = action
-    board[i][j] = X_O
+    new_board = board
+    new_board[i][j] = X_O
     
-    return board
+    return new_board
 
 
 def winner(board):
@@ -79,6 +82,7 @@ def winner(board):
     elif X_O == O:
         X_O = X
 
+    winning_counter = 0
     # check if the other party has won:
         # check horizontal cases
     for i in range(3):
@@ -156,4 +160,4 @@ def minimax(board):
     Returns the optimal action for the current player on the board.
     """
     if terminal(board):
-        return utility()
+        return utility(board)
