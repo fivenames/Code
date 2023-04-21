@@ -1,6 +1,45 @@
 import sys
 from sqlconnect import connect_to_db
-from util import Node, QueueFrontier
+from frontier import Node, QueueFrontier
+
+
+''' 
+Solving search problem:
+    Initial state - the problem at hand.
+    Actions - stops of action to take from the initial state to the goal state.
+    Transition model - describes how each action taken will output a certain state. A state space is a graph of intermediate states via a sequence of actions.
+    Goal test - test whether the goal state is reached
+    Path cost function - measures the cost of solution, can be money, time etc. 
+'''
+
+def shortest_path(source, target):
+    """
+    Returns the shortest list of (movie_id, person_id) pairs
+    that connect the source to the target.
+
+    If no possible path, returns None.
+    """
+    # Node.state is person_id, Node.parent is parent_node, Node.action is the action of staring in the same movie(movie_id).
+    init_state = Node(source, None, None)
+    frontier = QueueFrontier()
+    frontier.add(init_state)
+    while True:
+        if frontier.empty():
+            return None
+        expand_node = frontier.remove()
+        neighbor_nodes = neighbors_for_person(expand_node.state)
+        for node in neighbor_nodes:
+            movie_id, person_id = node
+            if person_id != target: 
+                frontier.add(Node(person_id, expand_node, movie_id))
+            else:
+                path = []
+                while(expand_node.parent != None):
+                    path.insert(0, (expand_node.action, expand_node.state))
+                    expand_node = expand_node.parent
+                path.append((movie_id, person_id))
+                return path
+            
 
 # Maps names to a set of corresponding person_ids
 names = {}
@@ -79,36 +118,7 @@ def main():
             movie = movies[path[i + 1][0]]["title"]
             print(f"{i + 1}: {person1} and {person2} starred in {movie}")
 
-
-def shortest_path(source, target):
-    """
-    Returns the shortest list of (movie_id, person_id) pairs
-    that connect the source to the target.
-
-    If no possible path, returns None.
-    """
-    # Node.state is person_id, Node.parent is parent_node, Node.action is the action of staring in the same movie(movie_id).
-    init_state = Node(source, None, None)
-    frontier = QueueFrontier()
-    frontier.add(init_state)
-    while True:
-        if frontier.empty():
-            return None
-        expand_node = frontier.remove()
-        neighbor_nodes = neighbors_for_person(expand_node.state)
-        for node in neighbor_nodes:
-            movie_id, person_id = node
-            if person_id != target: 
-                frontier.add(Node(person_id, expand_node, movie_id))
-            else:
-                path = []
-                while(expand_node.parent != None):
-                    path.insert(0, (expand_node.action, expand_node.state))
-                    expand_node = expand_node.parent
-                path.append((movie_id, person_id))
-                return path
         
-
 def person_id_for_name(name):
     """
     Returns the IMDB id for a person's name,
@@ -150,3 +160,4 @@ def neighbors_for_person(person_id):
 
 if __name__ == "__main__":
     main()
+
