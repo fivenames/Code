@@ -1,6 +1,6 @@
 import itertools
 
-
+# Super-class
 class Sentence():
 
     def evaluate(self, model):
@@ -47,29 +47,38 @@ class Symbol(Sentence):
     def __init__(self, name):
         self.name = name
 
+    # Operator overloading for "=="
     def __eq__(self, other):
         return isinstance(other, Symbol) and self.name == other.name
 
+    # To hash the object by its name, if it needs to be stored in a set or dictionary. If not implemented, Python will use the default hashing method(memory address). 
+    # Dictionary is an array of key-value pair, if there are more than one pair, an array of linked list is used. Objects need to be hashed before it is indexed into the array.
     def __hash__(self):
         return hash(("symbol", self.name))
 
+    # Return a string representation of the object, when calling repr(). The result can subsequently be used to create/reproduce the same object.
+    # When returning a string representation is needed and __STR__ is undefined, __repr__ definition is used instead.
     def __repr__(self):
         return self.name
-
+    
+    # Try to return the boolean value of the object inside of the current model(a dictionary of variables)
     def evaluate(self, model):
         try:
             return bool(model[self.name])
         except KeyError:
             raise Exception(f"variable {self.name} not in model")
 
+    # Print the propositional formula
     def formula(self):
         return self.name
-
+    
+    # return a set of all symbols in a propositional logical sentence, this method will be further overwriten in sub-classes to achieve this.
     def symbols(self):
         return {self.name}
 
 
 class Not(Sentence):
+    # Operand attribute is an object from the Sentence class or any of its sub-classes.
     def __init__(self, operand):
         Sentence.validate(operand)
         self.operand = operand
@@ -84,6 +93,7 @@ class Not(Sentence):
         return f"Not({self.operand})"
 
     def evaluate(self, model):
+        # returns true if the element in the model is false
         return not self.operand.evaluate(model)
 
     def formula(self):
@@ -113,10 +123,12 @@ class And(Sentence):
         )
         return f"And({conjunctions})"
 
+    # knowledge.add() will call add method from the And class, adding more true facts into the knowledge.
     def add(self, conjunct):
         Sentence.validate(conjunct)
         self.conjuncts.append(conjunct)
 
+    # all() returns true if all the element within is true, evaluate returns the boolean value of the element in the model.
     def evaluate(self, model):
         return all(conjunct.evaluate(model) for conjunct in self.conjuncts)
 
@@ -149,6 +161,7 @@ class Or(Sentence):
         return f"Or({disjuncts})"
 
     def evaluate(self, model):
+        # any returns true if any element within is true, evaluate returns the boolean value of the element in the model.
         return any(disjunct.evaluate(model) for disjunct in self.disjuncts)
 
     def formula(self):
@@ -179,6 +192,7 @@ class Implication(Sentence):
     def __repr__(self):
         return f"Implication({self.antecedent}, {self.consequent})"
 
+    # Using implication elimination to determine the boolean value to return
     def evaluate(self, model):
         return ((not self.antecedent.evaluate(model))
                 or self.consequent.evaluate(model))
@@ -210,6 +224,7 @@ class Biconditional(Sentence):
     def __repr__(self):
         return f"Biconditional({self.left}, {self.right})"
 
+    # Converted to conjunctive normal form to determine the boolean value to return
     def evaluate(self, model):
         return ((self.left.evaluate(model)
                  and self.right.evaluate(model))
@@ -228,15 +243,20 @@ class Biconditional(Sentence):
 def model_check(knowledge, query):
     """Checks if knowledge base entails query."""
 
+    # The model starts with an empty dict
     def check_all(knowledge, query, symbols, model):
         """Checks if knowledge base entails query, given a particular model."""
 
         # If model has an assignment for each symbol
         if not symbols:
 
-            # If knowledge base is true in model, then query must also be true
+            # The evaluate method returns the boolean value of the object inside of the dictionary(the model)
             if knowledge.evaluate(model):
+                # If the knowledge base is true in this model, return the boolean value of the query inside the model(True/False)
                 return query.evaluate(model)
+            
+            # If the knowledge is false, return True as well.
+            # There are many different models and each returns a boolean value, if there is one False, the overall return by the function call will be False.
             return True
         else:
 
@@ -252,7 +272,8 @@ def model_check(knowledge, query):
             model_false = model.copy()
             model_false[p] = False
 
-            # Ensure entailment holds in both models
+            # Recursively calling the function to create all the possible model, passing in the dict just created.
+            # Notice the and operator, this will act like a tree which will branch into many branches of stack frames. If one of the call is False, the return will be False overall.
             return (check_all(knowledge, query, remaining, model_true) and
                     check_all(knowledge, query, remaining, model_false))
 
