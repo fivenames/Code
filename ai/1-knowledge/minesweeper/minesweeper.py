@@ -189,13 +189,13 @@ class MinesweeperAI():
             5) add any new sentences to the AI's knowledge base
         """
 
-        # Step 1
+        # Step 1, record move made
         self.moves_made.add(cell)
 
-        # Step 2
+        # Step 2, record safe moves
         self.mark_safe(cell)
 
-        # Step 3
+        # Step 3, add new knowledge
         neighbors = set()
         # Range from first element inclusive, to second element exclusive
         for i in range(cell[0] - 1, cell[0] + 2):
@@ -205,7 +205,7 @@ class MinesweeperAI():
         new_sentence = Sentence(neighbors, count)
         self.knowledge.append(new_sentence)
 
-        # Step 4
+        # Step 4, using the current knowledge
         for sentence in self.knowledge:
             known_safes = sentence.known_safes().copy()
             if known_safes:
@@ -217,10 +217,11 @@ class MinesweeperAI():
                     self.mark_mine(mine)
         
 
-        # Step 5
+        # Step 5, making inference with current knowledge
         for s1 in self.knowledge:
             for s2 in self.knowledge:
                 if s1 != s2 and s1.cells.issubset(s2.cells):
+                    # super-set - sub-set1 = sub-set2 with a mine_count of super_count - sub1_count
                     new_sentence = Sentence(s2.cells - s1.cells, s2.count - s1.count)
                     if new_sentence not in self.knowledge:
                         self.knowledge.append(new_sentence)
