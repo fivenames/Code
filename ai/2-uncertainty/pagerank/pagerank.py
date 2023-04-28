@@ -89,7 +89,7 @@ def sample_pagerank(corpus, damping_factor, n):
     pagerank = dict()
     sample = random.choice(list(corpus.keys()))
 
-    for i in range(n):
+    for _ in range(n):
         probability = transition_model(corpus, sample, damping_factor)
         sample = random.choices(list(probability.keys()), weights=list(probability.values()), k=1)[0]
         if sample in pagerank:
