@@ -47,7 +47,7 @@ def crawl(directory):
 
     return pages
 
-
+# corpus: {"1.html": {"2.html", "3.html"}, "2.html": {"3.html"}, "3.html": {}}
 def transition_model(corpus, page, damping_factor):
     """
     Return a probability distribution over which page to visit next,
@@ -57,7 +57,24 @@ def transition_model(corpus, page, damping_factor):
     linked to by `page`. With probability `1 - damping_factor`, choose
     a link at random chosen from all pages in the corpus.
     """
-    raise NotImplementedError
+    model = dict()
+
+    n = len(corpus)
+    for webpage in corpus.keys():
+        # Equal chance of selection for all pages in the corpus for 1 - dampling_factor
+        model[webpage] = (1 - damping_factor) / n
+
+    # A set of links to other pages for the given webpage
+    pagelinks = corpus[page]
+    p = len(pagelinks)
+    if p == 0:
+        return model
+
+    for link in pagelinks:
+        # Equal chance of selection for all linked pages in the given page for damping_factor
+        model[link] += damping_factor / p
+
+    return model
 
 
 def sample_pagerank(corpus, damping_factor, n):
@@ -69,7 +86,18 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
+    pagerank = dict()
+    sample = random.choice(list(corpus.keys()))
+
+    for i in range(n):
+        probability = transition_model(corpus, sample, damping_factor)
+        sample = random.choices(list(probability.keys()), weights=list(probability.values()), k=1)[0]
+        if sample in pagerank:
+            pagerank[sample] += 1 / n
+        else:
+            pagerank[sample] = 1 / n
+    
+    return pagerank
 
 
 def iterate_pagerank(corpus, damping_factor):
@@ -81,8 +109,39 @@ def iterate_pagerank(corpus, damping_factor):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
+    iterate_PR = {}
+    n = len(corpus)
+    for page in corpus:
+        iterate_PR[page] = 1 / n
 
+    changes = 0.0011
+    while changes >= 0.001:
+        changes = 0
+
+        previous_state = iterate_PR.copy()
+
+        for curr_page in iterate_PR.keys():
+            # If current page is linked by a page, append the page as parents
+            parents = [page for page in corpus.keys() if curr_page in corpus[page]]
+            first_part = ((1-damping_factor) / n)
+            second_part = []
+
+            if len(parents) != 0:
+                # Calculate the second part of the equation by summing all the values
+                for parent in parents:
+                    num_links = len(corpus[parent])
+                    val = iterate_PR[parent] / num_links
+                    second_part.append(val)
+
+            second_part = damping_factor * sum(second_part)
+            iterate_PR[curr_page] = first_part + second_part
+
+            changes = abs(iterate_PR[curr_page] - previous_state[curr_page])
+    
+    # Ensure that the sum will add up to 1 by dividing each value by the total sum.
+    dictsum = sum(iterate_PR.values())
+    iterate_PR = {key: value / dictsum for key, value in iterate_PR.items()}
+    return iterate_PR
 
 if __name__ == "__main__":
     main()
