@@ -43,7 +43,7 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("Usage: python heredity.py data.csv")
 
-    # load_data() returns a dictionary of key "name" paird with a dictionary(contains name, mother, father and trait) as value.
+    # load_data() returns a dictionary of key "name" paird with a dictionary(contains name, mother, father and trait) as value
     people = load_data(sys.argv[1])
 
     # Create a dictionary of key "name" paired with a ditionary(contains gene and trait probability distribution) as value
@@ -63,18 +63,17 @@ def main():
         for person in people
     }
 
-    # Convert the dictionary returned by load_data() call into a set, Note: the set will contain only the key "name".
+    # Convert the dictionary returned by load_data() call into a set, Note: the set will contain only the key "name"
     names = set(people)
 
     # The powerset() returns a list of sets containing all possible combinations of elements from the set passed in. Ie. all subsets
-    # Loop through all possible combinations of names.
+    # Loop through all possible combinations of names
     for have_trait in powerset(names):
 
-        # Check if current set of people violates known information
         fails_evidence = any(
             (people[person]["trait"] is not None and
-            # Check if the current person have the trait but not in the current subset, or the person do not have the trait but is in the current subset.
-            # There is an assumption here that the current subset is a set of people with the trait.
+            # Check if the current person have the trait but not in the current subset, or the person do not have the trait but is in the current subset
+            # There is an assumption here that the current subset is a set of people with the trait
             people[person]["trait"] != (person in have_trait))
             for person in names
         )
@@ -82,13 +81,38 @@ def main():
             continue
         # Else, the current subset is a set of names of those with the traits
 
-        # Loop over all sets of people who might have the gene
+        # Loop over all sets of people that are assigned to have the gene
         for one_gene in powerset(names):
             for two_genes in powerset(names - one_gene):
+            # Those not in one_gene or two_gene are assigned as no gene, hence all possible assignments are considered, then
 
-                # Calculate all the joint probability for each possible subset
+                # Calculate all the joint probability for each possible subset. Sum the joint probabilities as per the Marginalisation concept to calculate the conditional probability
+                '''
+                    The hidden variable is the set of people with no copy, one copy or two copies of the gene. 
+                    Summing all the joint probabilities for all the possible assignment of one gene, two gene or none
+                    will produce P(query|evidence), such that evidence is the observed traits, and
+                    query is the probability of children displaying the trait. Consider the Baysian Network:
+
+                         MotherGene,              FatherGene,
+                           0, 1, 2                  0, 1, 2
+                     |                 |       |               |                     
+                     V                 V       V               V
+                MtherTrait             ChildGene          FtherTrait
+                   Y, N                 0, 1, 2              Y, N
+                                           |
+                                           V
+                                      ChildTrait
+                                         Y, N
+
+                    P[ ChildTrait|(MtherTrait ∧ FtherTrait) ] = k P(ChildTrait ∧ MtherTrait ∧ FtherTrait)
+                    However, MtherTrait and FtherTrait does not directly impact on ChildTrait, therefore to calculate this, Marginalisation is used.
+                    By summing all the probabilities for all possible copies of gene that the Mother, Father and Child carries,
+                    ie. P(ChildTrait ∧ MtherTrait ∧ FtherTrait ∧ MotherGene0 ∧...) + P(ChildTrait ∧ MtherTrait ∧ FtherTrait ∧ MotherGene1 ∧...) + ...
+                    P(ChildTrait ∧ MtherTrait ∧ FtherTrait) can be found.
+
+                    *refer to probability.py for more details.
+                '''
                 p = joint_probability(people, one_gene, two_genes, have_trait)
-                # Sum the joint probability using the Marginalisation concept
                 update(probabilities, one_gene, two_genes, have_trait, p)
 
     # Normalisation factor
@@ -143,6 +167,7 @@ def powerset(s):
 
 # Joint probability = P(A ∧ B)
 def joint_probability(people, one_gene, two_genes, have_trait):
+    # consider all possible assignments of gene counts and traits to each individual, taking into account the relationships between parents and children
     """
     Compute and return a joint probability.
 
