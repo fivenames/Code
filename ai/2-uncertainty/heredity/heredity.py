@@ -4,7 +4,7 @@ import sys
 
 PROBS = {
 
-    # Unconditional probabilities for having gene
+    # Unconditional probabilities for having gene, if parent is unknown
     "gene": {
         2: 0.01,
         1: 0.03,
@@ -25,7 +25,7 @@ PROBS = {
             False: 0.44
         },
 
-        # Probability of trait given no gene
+        # Probability of trait given no gene, to consider the chance of mutation
         0: {
             True: 0.01,
             False: 0.99
@@ -127,7 +127,7 @@ def powerset(s):
         )
     ]
 
-
+# Joint probability = P(A ∧ B)
 def joint_probability(people, one_gene, two_genes, have_trait):
     """
     Compute and return a joint probability.
