@@ -3,13 +3,13 @@ Conditional probability: P(A|B) = P(A ∧ B) / P(B), and since P(A ∧ B) = P(B 
 P(A|B) = P(B|A) * [ P(A) / P(B) ]; This can be used for eg. 80% of counterfeit bills has blurry text, calculate the probability of a bill with blurry text is a counterfeit bill.
 
 Recall H2 Math probability Venn diagram: Negation[ P(A) = 1 - P(¬A) ], Inclusion-Exclusion[ P(A V B) = P(A) + P(B) - P(A ∧ B) ], and;
-Marginalisation[ P(A) = P(A ∧ B) + P(A ∧ ¬B) ] == Conditioning[ P(A) = P(A|B)P(B) + P(A|¬B)P(¬B) ]
+Marginalisation[ P(A) = P(A ∧ B) + P(A ∧ ¬B) ] == Conditioning[ P(A) = P(A|B)P(B) + P(A|¬B)P(¬B) ] (re-arranging)
 
 Bayesian Network - data structure that represents the dependencies among random variable, it is implemented using a directed graph with each node representing a random variable
 and has the probability distribution: P(X|parents(X)); To calculate the joint probability, P(grandparents ∧ parents ∧ X) == P(grandparent)P(parent|grandparent)P(X|parent)
 
 Using Inference by Enumeration to find P(Query|Evidence) == k * P(Query ∧ Evidence), where k is a constant == 1/P(Evidence) and Evidence is already observed -> P(Evidence) known.
-Using marginalisation, P(Query|Evidence) = k * P(Query ∧ Evidence) = k * Σ[ P(Query ∧ Evidence ∧ hidden variables) ] for all possible values of hidden variables.
+Using Marginalisation, P(Query|Evidence) = k * P(Query ∧ Evidence) = k * Σ[ P(Query ∧ Evidence ∧ hidden variables) ] for all possible values of hidden variables.
 '''
 
 '''

@@ -86,11 +86,12 @@ def main():
         for one_gene in powerset(names):
             for two_genes in powerset(names - one_gene):
 
-                # Update probabilities with new joint probability
+                # Calculate all the joint probability for each possible subset
                 p = joint_probability(people, one_gene, two_genes, have_trait)
+                # Sum the joint probability using the Marginalisation concept
                 update(probabilities, one_gene, two_genes, have_trait, p)
 
-    # Ensure probabilities sum to 1
+    # Normalisation factor
     normalize(probabilities)
 
     # Print results
