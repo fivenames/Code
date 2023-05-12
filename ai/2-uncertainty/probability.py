@@ -18,10 +18,12 @@ Sampling - select a large number of possible states based on the conditional pro
 Rejection Sampling is a way to carry out sampling, check the samples which the evidence is false and reject them, then count the number of samples that query is true,
 this divided by the accepted sample will be an estimation for P(query|evidence). However, this method will be very inefficient when the acceptance rate is low.
 
-Likelyhood weighting is another way to carry out sampling, sample the network with fixed the evidence. The weight of the sample is calculated by multiplying the probabilities of
+Likelyhood weighting is another way to carry out sampling, sample the network with fixed evidence. The weight of the sample is calculated by multiplying the probabilities of
 the evidence variables given the sample, it measures how well the sample matches the evidence. The final estimate for the probability of the query given the evidence is obtained
 by summing up the weights of all the samples where the query is true, and then dividing this by the sum of the weights of all the generated samples.
 '''
+
+
 
 '''
 Markov Model is used to model the behavior of a system that has each of its state changes depend only on the previous states(evidence).
