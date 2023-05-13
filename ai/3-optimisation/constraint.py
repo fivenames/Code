@@ -9,11 +9,11 @@ A common representation of a CSP is a Constraint Graph, where each node in the g
 This graph helps visualize the relationships between variables and constraints, aiding in problem-solving and constraint propagation.
 '''
 
-# function will return True if domain for X is modified, False otherwise.
+# function will return True if domain for variable X is modified, False otherwise.
 # revised(problem, X, Y):
     # revised = False
     # for x in X.domain:
-        # if no y in Y.domain satisfies constraint for (X, Y):
+        # if no y in Y.domain satisfies the constraint for (X, Y):
             # delete x from X.domain
             # revised = True
     # return revised
@@ -21,7 +21,7 @@ This graph helps visualize the relationships between variables and constraints, 
 # function will return True if achieved arc consistency, False otherwise. 
 # Note, everytime a domain is deleted, the function need to check again if the revised domain will still satisfy all the neighbouring variables' Binary constraints.
 # AC-3(problem):
-    # queue = all constraints
+    # queue = all edges
     # while queue != None:
         # (X, Y) = DEQEUE(queue)
         # if revised(problem, X, Y):
