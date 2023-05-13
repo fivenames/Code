@@ -77,7 +77,13 @@ and Degree Heuristic, help in choosing the most promising variables. MRV selects
 Degree Heuristic selects the variable with the highest degree, indicating it has the most constraints, which can quickly restrict the domain values for its neighbors.
 
 Similarly, selecting domain values can be optimized using heuristics such as the Least-Constraining Values (LCV) heuristic. LCV prioritizes values that minimize the impact 
-on neighboring variables. By selecting values that rule out fewer options for neighboring variables, LCV increases search flexibility and improves the chances of finding a solution. 
+on neighboring variables. By selecting values that rule out fewer options for neighboring variables, LCV increases search flexibility and improves the chances of finding a solution.
+
+The selection of domain value heuristic and selecting variable heuristics can present a conflict due to their different goals and impacts on the search process. 
+When choosing variables, the aim is to limit the search space by assigning values to variables and moving towards a solution. This process is driven by the fact 
+that all variables must be assigned, and there can be multiple valid solutions. The selection of variable heuristics helps in efficiently narrowing down the search space.
+On the other hand, selecting domain values has a different objective. It aims to keep the choice open and increase the chances of finding a solution by not immediately assigning 
+values that might restrict the search. Unlike variables, not all values need to be assigned to a variable, and leaving out certain values can enhance search efficiency. 
 '''
 
 # backtrack(assignment, problem):
