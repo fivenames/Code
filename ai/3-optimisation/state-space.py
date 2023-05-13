@@ -1,13 +1,13 @@
 '''
-With a clear goal state in mind, meaning the specific configuration/value of the goal is known precisely, a simple search algorithm can be used to solve the problem. However, 
-if the goal state of the problem not yet clear, meaning the exact configure/value is not known, then this kind of local search problems can be defined as a State-Space Landscape.
+With a clear goal state in mind, meaning the specific configuration/value of the goal is known precisely, uninformed search algorithms can be employed to solve the problem. 
+However, when the goal state is not yet clear, the problem can be defined as an optimisation problem within a State-Space Landscape.
 
-Within the landscape, each possible state the problem can exist is represented and valued. The goal is either finding the maximum or the minimum valued 
-state that the problem can exist. To find a global maximum, a objective function is used. On the other hand, to find a global minimum, a cost function is used.
+Within this landscape, each possible state of the problem is represented and assigned a value. The objective is to either find the maximum valued state (using an objective function) 
+or the minimum valued state (using a cost function). Both functions assess the value of the current state based on the optimisation criteria.
 
-Hill Climbing algorithm is a possible way to solve this problem. It will consider all neighouring states and choose the state that is the highest/lowest possible state.
-Limitation are, it may get stuck in a certain state where all neighbouring states are not any higher/lower but the state itself is not the optimal solution,
-that current state is called the local maxima/minima. It may also get stuck in a flat local maximum || shoulder, where all neighbouring states are of the same level. 
+The Hill Climbing algorithm is a method to solve optimization problems by considering direct neighboring states and selecting the state with the highest/lowest value. 
+However, it has some limitations. It may get trapped in a local maximum/minimum, where all immediate neighboring states have lower/higher values, but the current state itself is 
+not the optimal solution. Another limitation is the possibility of getting stuck in a flat local maximum or minimum, where all neighboring states have the same value.
 '''
 
 # Hill climbing algorithm:
@@ -17,19 +17,19 @@ that current state is called the local maxima/minima. It may also get stuck in a
         # neighbour = highest valued neighbour of current
         # if neighbour is not better than currrent:
             # return current
-        # current = neighbor
+        # current = neighbour
 
 '''
-Variants of Hill Climbing: 
-steepest-ascent(choose the highest/lowest neighbour), stochastic(randomly choose from higher/lower neighbours), first-choice(choose first higher/lower neighbour found),
-and variants that attempt to overcome the limitations:
-random-restart(conduct the search multiple times with random initial state), local beam search(chooses multiple higher valued neighbours).
+Variants of the Hill Climbing algorithm: The Steepest-Ascent variant always chooses the highest/lowest-valued neighbor. The Stochastic variant,
+selects the next state probabilistically based on certain quality of the neighbouring states. The First-Choice variant selects the first higher/lower neighbour it encounters.
+To address the limitations, the Random-Restart variant conducts the search multiple times with random initial states, allowing exploration of different regions of the search space. 
+Another variant called Local Beam Search chooses multiple higher-valued neighbors to avoid getting trapped in local optima/minima.
 '''
 
 
 '''
-Simulated Annealing is way to find the global maximum. It is implemented with the logic that the algorithm has
-a probability of accepting worse states and the probability decreases gradually as the algorithm progresses.
+Simulated Annealing is an algorithm used to find the global maximum by accepting worse states with a gradually decreasing probability as the algorithm progresses. 
+It takes inspiration from the annealing process in metallurgy, where materials are heated and slowly cooled to reduce defects.
 '''
 
 # simulated_annealing(problem. max):
@@ -45,13 +45,13 @@ a probability of accepting worse states and the probability decreases gradually 
     # return current
 
 '''
-Application of this types of local search problem can be the Travelling Salesman Problem, 
-which is trying to find the shortest path to travel through all the selected cities. Each state of the problem in this case represent a path to travel through all the cities, 
-and neighbouring states can be viewed as switching two pairs of connected nodes so that the nodes now point to the node of the other pair.
+Travelling Salesman Problem is one possible application, which aims to find the shortest path that visits all selected cities exactly once and returns to the starting city.
+Each state represents a specific path, and neighbouring states are obtained by switching two pairs of connected nodes so that the nodes now point to the node of the other pair.
 '''
 
 '''
-Linear Programming can be used to minimise a linear equation with some constraints. For eg. A company operates two types of machines: Machine A and Machine B. 
-The company wants to find the optimal operating levels to minimize the cost of running the machines, while also ensuring that the supply is sufficient to meet the company's needs.
-The cost of the machine and the constraints can all be modelled using linear equations, and algprithms like Simplex and Interior-Point can be used to solve this type of problem.
+Another optimization technique, Linear Programming, is used to minimize or maximize a linear objective function while satisfying a set of linear constraints. It is commonly applied
+to problems where both the objective function and the constraints can be modeled using linear equations. For example, in a scenario where a company operates two types of machines,
+Machine A and B, Linear Programming can be used to find the optimal operating levels that minimize the cost of running the machines, while ensuring sufficient supply to meet 
+the company's needs. Algorithms like the Simplex method, Interior-Point methods, Revised Simplex Method, and Dual Simplex Method can be employed to solve these types of problems.
 '''
