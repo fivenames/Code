@@ -1,6 +1,8 @@
 ''' 
-Conditional probability: P(A|B) = P(A ∧ B) / P(B), and since P(A ∧ B) = P(B ∧ A), hence P(B|A) = P(A ∧ B) / P(A). Re-arranging to derive Baye's rule:
-P(A|B) = P(B|A) * [ P(A) / P(B) ]; This can be used for eg. 80% of counterfeit bills has blurry text, calculate the probability of a bill with blurry text is a counterfeit bill.
+Conditional probability: P(A|B) = P(A ∧ B) / P(B), and since P(A ∧ B) = P(B ∧ A), hence P(B|A) = P(A ∧ B) / P(A). Re-arranging derives Baye's rule: P(A|B) = P(B|A) * [ P(A) / P(B) ];
+This formula can calculate the probability of event A given event B by using the conditional probability of event B given event A, along with the individual probabilities of A and B.
+This can be used for eg. 80% of counterfeit bills has blurry text, calculate the probability of a bill with blurry text is a counterfeit bill. The given information is 
+80% of counterfeit bills have blurry text. using Bayes' rule: P(counterfeit|blurry text) = P(blurry text|counterfeit) * [ P(counterfeit) / P(blurry text) ].
 
 Recall H2 Math probability Venn diagram: Negation[ P(A) = 1 - P(¬A) ], Inclusion-Exclusion[ P(A V B) = P(A) + P(B) - P(A ∧ B) ], and;
 Marginalisation[ P(A) = P(A ∧ B) + P(A ∧ ¬B) ] == Conditioning[ P(A) = P(A|B)P(B) + P(A|¬B)P(¬B) ] (re-arranging). if B has more possibilities, sum all possible B probability.
