@@ -6,7 +6,7 @@ A and B cannot have the same value simultaneously. To ensure consistency in CSPs
 variable's domain satisfies its unary constraints. Arc consistency involves ensuring every binary constraint between two variables, the values in their domains satisfy the constraint.
 
 A common representation of a CSP is a Constraint Graph, where each node in the graph represents a variable, and edges(connectives) represent constraints between variables. 
-This graph helps visualize the relationships between variables and constraints, aiding in problem-solving and constraint propagation.
+This graph helps visualise the relationships between variables and constraints, aiding in problem-solving and constraint propagation.
 '''
 
 # function will return True if domain for variable X is modified, False otherwise.
@@ -68,15 +68,15 @@ is reached, in which case the algorithm returns the assignment as the solution, 
     # return failure
 
 '''
-To further optimize the constraint satisfaction problem-solving process, additional techniques can be applied. One approach is to leverage inference with existing knowledge to 
+To further optimise the constraint satisfaction problem-solving process, additional techniques can be applied. One approach is to leverage inference with existing knowledge to 
 maintain arc consistency. After assigning a value to a variable, enforcement of arc consistency can be performed on its neighboring variables. This inference step, using techniques
 like AC-3 algorithm, propagates constraints and narrows down the domains of neighboring variables. By reducing the search space, this technique can lead to more efficient exploration.
 
-In addition to inference, the selection of variables and domain values can be optimized using heuristics. Variable selection heuristics, such as Minimum Remaining Values (MRV) 
+In addition to inference, the selection of variables and domain values can be optimised using heuristics. Variable selection heuristics, such as Minimum Remaining Values (MRV) 
 and Degree Heuristic, help in choosing the most promising variables. MRV selects the variable with the smallest domain, allowing for early pruning of the search space. 
 Degree Heuristic selects the variable with the highest degree, indicating it has the most constraints, which can quickly restrict the domain values for its neighbors.
 
-Similarly, selecting domain values can be optimized using heuristics such as the Least-Constraining Values (LCV) heuristic. LCV prioritizes values that minimize the impact 
+Similarly, selecting domain values can be optimised using heuristics such as the Least-Constraining Values (LCV) heuristic. LCV prioritises values that minimise the impact 
 on neighboring variables. By selecting values that rule out fewer options for neighboring variables, LCV increases search flexibility and improves the chances of finding a solution.
 
 The selection of domain value heuristic and selecting variable heuristics can present a conflict due to their different goals and impacts on the search process. 

@@ -5,7 +5,7 @@ However, when the goal state is not yet clear, the problem can be defined as an 
 Within this landscape, each possible state of the problem is represented and assigned a value. The objective is to either find the maximum valued state (using an objective function) 
 or the minimum valued state (using a cost function). Both functions assess the value of the current state based on the optimisation criteria.
 
-The Hill Climbing algorithm is a method to solve optimization problems by considering direct neighboring states and selecting the state with the highest/lowest value. 
+The Hill Climbing algorithm is a method to solve optimisation problems by considering direct neighboring states and selecting the state with the highest/lowest value. 
 However, it has some limitations. It may get trapped in a local maximum/minimum, where all immediate neighboring states have lower/higher values, but the current state itself is 
 not the optimal solution. Another limitation is the possibility of getting stuck in a flat local maximum or minimum, where all neighboring states have the same value.
 '''
@@ -50,8 +50,8 @@ Each state represents a specific path, and neighbouring states are obtained by s
 '''
 
 '''
-Another optimization technique, Linear Programming, is used to minimize or maximize a linear objective function while satisfying a set of linear constraints. It is commonly applied
+Another optimisation technique, Linear Programming, is used to minimise or maximise a linear objective function while satisfying a set of linear constraints. It is commonly applied
 to problems where both the objective function and the constraints can be modeled using linear equations. For example, in a scenario where a company operates two types of machines,
-Machine A and B, Linear Programming can be used to find the optimal operating levels that minimize the cost of running the machines, while ensuring sufficient supply to meet 
+Machine A and B, Linear Programming can be used to find the optimal operating levels that minimise the cost of running the machines, while ensuring sufficient supply to meet 
 the company's needs. Algorithms like the Simplex method, Interior-Point methods, Revised Simplex Method, and Dual Simplex Method can be employed to solve these types of problems.
 '''

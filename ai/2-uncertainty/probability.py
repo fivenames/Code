@@ -14,6 +14,7 @@ Using Inference by Enumeration to find P(Query|Evidence) == k * P(Query ∧ Evid
 Using Marginalisation, P(Query|Evidence) = k * P(Query ∧ Evidence) = k * Σ[ P(Query ∧ Evidence ∧ hidden variables) ] for all possible values of hidden variables.
 '''
 
+
 '''
 Sampling - select a large number of possible states based on the conditional probability in the network, and then use the samples to estimate the probability of the query.
 
@@ -24,7 +25,6 @@ Likelyhood weighting is another way to carry out sampling, sample the network wi
 the evidence variables given the sample, it measures how well the sample matches the evidence. The final estimate for the probability of the query given the evidence is obtained
 by summing up the weights of all the samples where the query is true, and then dividing this by the sum of the weights of all the generated samples.
 '''
-
 
 
 '''
