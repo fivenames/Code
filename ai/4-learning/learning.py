@@ -46,7 +46,7 @@ for eg. predicting the revenue of a company based on its advertising spent. This
 
 '''
 Evaluating hypothesis functions involves using a loss function, which measures how poorly the hypothesis function performs. The loss function quantifies the accumulated errors or 
-inaccuracies in the predictions made by the hypothesis function. Evaluate the performance of different hypothesis functions by omparing their loss values.
+inaccuracies in the predictions made by the hypothesis function. Evaluate the performance of different hypothesis functions by comparing their loss values.
 
 One variant of the loss function is the L1 loss function. The L1 loss considers the difference between the actual value and the predicted value: 
 L1(actual, predicted) = | actual - predicted |. This loss function is especially useful in regression as it captures the magnitude of the inaccuracies.
@@ -61,7 +61,7 @@ To address overfitting, regularisation techniques can be employed. One approach 
 loss(h) = L + k * complexity(h), where h represents the hypothesis function and k determines the weighting given to the complexity term.
 Regularisation favors simpler and general hypotheses, by penalising complexity.
 
-Another approach cna be the Holdout Cross-Validation method, which splits data into a training set and a testing set, such that learning happens on the training set and hypothesis
+Another approach is the Holdout Cross-Validation method, which splits data into a training set and a testing set, such that learning happens on the training set and hypothesis
 is evaluated on the testing set. This method helps assess the generalisation ability of the hypothesis. However, it does not fully utilise the data for training, which can limit 
 the optimality of the hypothesis. To make more efficient use of the data, the k-fold Cross-Validation method can be employed.  the data is divided into k subsets or folds. 
 The model is trained and evaluated k times, each time using a different fold as the testing set and the remaining folds as the training set. 
@@ -94,10 +94,10 @@ Start by initialising Q(s, a) = 0 all possible states and actions
 When Agent took an action and received a feedback:
     Estimates the value Q(s, a) based on current reward and expected future rewards that can be achieved. 
     
-    Update Q(s, a) with the new estimate but taking into account of the old estimate, Q(s, a) = Q(s, a) + k(new estimate - old estimate).
-    Here, k is the learning rate, which represents how much new information is valued over the old information. A value of k = 1 indicates that the new estimate completely 
-    replaces the old estimate. old estimate == Q(s, a), and new estimate == currentReward + k * future reward estimate, where k represents how much future reward is valued. 
-    future reward estmate == max( for all possible Q(s', a'), where s' and a' represent all the possible future actions and states )
+    Update Q(s, a) with the new estimate but taking into account of the old estimate, Q(s, a) = Q(s, a) + α(new estimate - old estimate).
+    Here, α is the learning rate, which represents how much new information is valued over the old information. A value of α = 1 indicates that the new estimate completely replaces 
+    the old estimate. old estimate == Q(s, a), and new estimate == currentReward + γ * future reward estimate, where γ is the discount factor, which represents how much future reward 
+    is valued(works similar to α). future reward estmate == max( for all possible Q(s', a'), where s' and a' represent all the possible future actions and states )
 
 A Greedy Decision-Making will always selecting the action with the highest Q-value for a given state. A possible downside of this approach is that the Agent will always pick the 
 action that it knows is the best rewarding, hence it will not explore other possible paths of the state-action chain, which can be more efficient or rewarding.

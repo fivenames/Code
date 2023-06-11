@@ -61,7 +61,6 @@ def load_data(filename):
     """
     all_evidences = []
 
-    evidences = []
     labels = []
 
     with open(filename) as inputfile:
@@ -73,7 +72,9 @@ def load_data(filename):
 
         reader = csv.DictReader(inputfile)
         for row in reader:
+            evidences = []
             keys = row.keys()
+            
             for key in keys:
                 value = row[key]
                 
@@ -98,7 +99,7 @@ def load_data(filename):
 
                 evidences.append(evidence)
             all_evidences.append(evidences)
-            evidences = []
+
     return (all_evidences, labels)
 
 
