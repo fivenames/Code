@@ -12,10 +12,11 @@ However, this approach has a limitation as it only considers the closest neighbo
 Instead of considering only the closest neighbor, it consider all k nearest data points. The algorithm chooses the most common class among those k nearest neighbors 
 to determine the class label for the input point.
 
-Classes or categories can often be separated by an imaginary boundary. This boundary divides the dataset, with most instances of Class X on one side and Class Y on the other.
-To determine which side an input point falls into, a hypothesis function, denoted as h(), is defined. This function can be modeled as a linear equation of input variables, 
-with coefficients known as weights, indicating their impact on the classification. The output of the hypothesis function, either positive or negative, 
+Classes or categories can often be separated by an imaginary boundary, namely the decision boundary. This boundary divides the dataset, with most instances of Class X on one side 
+and Class Y on the other. To determine which side an input point falls into, a hypothesis function is defined. This function can be modeled as an equation of input variables,
+with coefficients called weights, indicating their impact on the classification. The output of the hypothesis function, either positive or negative, 
 determines the side of the boundary the input point belongs to. h(x1, x2), can be represented as h(x) = w0 + w1x1 + w2x2, where w0 accounts for the translation of the boundary. 
+
 A weight vector, w, holds all the weights of the hypothesis function, while an input vector, x, contains the input data. The lengths of w and x are equal, and 
 the hypothesis function can be expressed as the dot product of w and x, denoted as h(x) = w • x. Considering the dot product involves vectors, x is typically augmented 
 with a value of 1 as the first element, accounting for the weight w0. Formally, the hypothesis function is written as h(x) = 1 if w • x >= 0, otherwise 0.
