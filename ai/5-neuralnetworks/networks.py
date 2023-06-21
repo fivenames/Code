@@ -34,12 +34,12 @@ similar to how it is done for an ANN with a single output node.
 
 '''
 Multilayer Neural Network (MLNN) is an ANN with an input layer, an ouput layer and at least one hidden layer in between.
-This architecture allows for the modeling of non-linear mathematical functions. In contrast, a neural network without hidden layers can only represent linear functions 
+This architecture allows for the modeling of non-linear mathematical functions. In contrast, an ANN without hidden layers can only represent linear functions 
 because the inputs are combined linearly (e.g., w0 + w1x1 + w2x2 + ...). However, real-world problems often require the modeling of non-linear relationships.
 
 By passing the inputs through multiple hidden layers, each layer calculates its own output based on its input and passes it to the next layer. 
-This ability to learn hierarchical representations is particularly valuable in classification problems. Each hidden node can learn to identify specific patterns or features, 
-and subsequent layers or the output layer can combine these learned features to produce a more accurate decision boundary or classification.
+This ability to learn hierarchical representations is particularly valuable in classification problems. Each hidden node can learn to identify specific patterns or decision boundary, 
+subsequent layers or the output layer can combine these learned features to produce a more accurate decision boundary or classification.
 
 Notice that the hidden intermediate layers the values in the hidden layers do not have a direct interpretation or use for calculating the error or loss. 
 Backpropagation starts from the output layer and propagates the error backwards through the network, attributing the contribution of each node in the previous layer 
