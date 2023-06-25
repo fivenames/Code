@@ -52,7 +52,7 @@ inaccuracies in the predictions made by the hypothesis function. Evaluate the pe
 One variant of the loss function is the L1 loss function. The L1 loss considers the difference between the actual value and the predicted value: 
 L1(actual, predicted) = | actual - predicted |. This loss function is especially useful in regression as it captures the magnitude of the inaccuracies.
 Another variant is the L2 loss function, which penalises inaccurate predictions heavily by taking the squared difference between the actual value and the predicted value: 
-L2(actual, predicted) = (actual - predicted)^2.
+L2(actual, predicted) = (actual - predicted)².
 
 Overfitting is a common problem that occurs when a model that fits too closely to a particular data set and therefore may fail to generalise to future data.
 For eg. in classification problems, overfitting may manifest as irregular decision boundaries, while in regression problems, it can be seen as irregular lines or curves. 

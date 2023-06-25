@@ -4,11 +4,12 @@ It can model a mathematical function from inputs to outputs based on the structu
 For eg. The activation function mentioned in machine learning: h(x) = w0 + w1x1 + w2x2 is a simple neural network. It contains two input nodes (x1 and x2) and one output node.
 
 In more complex problems, training a neural network to learn the underlying mathematical function requires a technique called Gradient Descent. It is an optimisation algorithm 
-used to minimise the loss during training. The loss function mentioned in machine learning, measures how poorly the hypothesis function performs. 
-To apply Gradient Descent, differentiate the loss function. This will find the rate of change of the loss with respect to the network's weights. 
-If the gradient is negative, it means that at the current weight assignment, the loss is decreasing with increasing weight, and vice versa.
-Updating the weights in the opposite direction of the gradient helps achieve minimal loss. If the gradient is positive, the weight is decreased, 
-and if the gradient is negative, the weight is increased:
+used to minimise the loss during training. The loss function measures how poorly the hypothesis function performs, for eg. L = (actual - predicted)²， if considering all data points:
+L = (actual_1 - h(x_1))² + (actual_2 - h(x_2))² + ... By substuting the actual values and corresponding data points into the equation, a function of loss and weight is formed.
+
+To apply Gradient Descent, differentiate the loss function. This will give the rate of change of the loss with respect to the network's weights. If the gradient is negative,
+it means that at the current weight assignment, the loss is decreasing with increasing weight, and vice versa. Updating the weights in the opposite direction
+of the gradient helps achieve minimal loss. If the gradient is positive, the weight is decreased, and if the gradient is negative, the weight is increased:
     Start with a random choice of weights
     Loop:
         Calculate the gradient based on all data points, direction that will lead to decreasing loss

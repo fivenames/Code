@@ -32,4 +32,4 @@ However, in runtime, the interpretor can understand that ClassB is the object ty
 Casting can solve the problem, use syntax like ( (ClassB)var ).methods to indicate that the method is from the sub-class.
 */
 
-// In Java, there are keywords: abstract, final, to describe classes and interfaces to describe methods when it comes to polymorphism.
+// In Java, there are keywords: abstract, final, to describe classes and interfaces(use implements keyword for inheriting classes) to describe methods when it comes to polymorphism.
