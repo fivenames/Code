@@ -64,3 +64,40 @@ Essentially, during each iteration of the training algorithm, a percentage of ra
 simulating the nodes not receiving any inputs and producing any outputs. Dropout introduces a form of regularisation during training, it encourages the network to become more robust 
 and prevents over-reliance on individual units or co-adaptation among units, and therefore generalise new datasets more accurately.
 '''
+
+
+
+'''
+In image recognition tasks, using the raw RGB pixel values as input may not effectively capture the structure and shape of objects in the image. To improve the efficiency of DNNs 
+for image analysis, a technique call Image Convolution can be used. It is the method of applying a filter that adds each pixel value of an image to its neighbours,
+weighted according to a Kernal matrix. Recall from CS50 filter problem set, the filter weights are used to emphasise edges.
+This process extracts relevant information and helps the network focus on important visual characteristics. 
+
+Another possible problem faced during image analysis is the resolution of the image. Images with a high number of pixels will produce many input nodes, which will
+increase computational resource consumption. A technique named Pooling can be used to reduce the resolution of the image. It involves reducing the size of an input by sampling
+from regions in the input. A popular type of Pooling is the Max-Pooling, which carries out pooling by choosing the maximum value in each region. 
+By dividing the input into regions, such as 2x2 windows, and selecting the maximum value within each region, this downsampling process 
+reduces the spatial resolution of the input while retaining the most prominent information.
+
+A Convolutional Neural Network(CNN) is an ANN that uses convolution, usually for analysing images. The CNN architecture starts by taking an input image and applying multiple filters
+through the process of image convolution. Each filter extracts specific features or characteristics from the input image. CNNs has the ability to learn and optimise the filter's
+Krnel Matrices during training. Through deep learning, the CNN automatically determines the best filter settings to capture the most important features relevant to the task at hand.
+Following the convolutional layers, the output feature maps typically undergo a pooling operation. The convolution and pooling steps can be repeated multiple times before
+the data is flattened into a vector and is fed into a traditional fully connected neural network (DNN) for further processing, such as classification or regression.
+'''
+
+
+
+'''
+Traditional Neural Networks are often referred to as Feed-Forward Neural Networks (FFNNs) because they have connections that propagate information only in one direction, 
+from the input to the output. Hence FFNNs face limitations when handling sequential data where the order or sequence of inputs and outputs matters. Recurrent Neural Networks (RNNs) 
+address this limitation by introducing feedback connections that allow information to be propagated in a recurrent manner.
+
+For example, the CaptionBot developed by Microsoft, which takes an image as input and generates a sequence of words that describes the image. The RNN outputs a single word each run
+and is fed back into the network, becoming part of the input for the next run, allowing the network to generate subsequent words in a sequential manner.
+RNNs are also suitable for video analysis tasks. They can process a sequence of frames from a video, taking in one frame at a time and updating the internal state of the network. 
+The calculated values are then fed back into the RNN for the next frame, the network then generates classifications or predictions after all frames are analysed.
+Google Translate is another prominent example, it takes in a sequence of words and outputs a sequence of words. Each word is sequentially fed into the RNN, and the 
+recurrent connections enable the network to capture contextual information from previous words. After all input words are processed, the RNN then generates each output words
+sequentially and each output is also fed back into the network, producing more accurate translations.
+'''
