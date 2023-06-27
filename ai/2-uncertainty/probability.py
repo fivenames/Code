@@ -8,7 +8,7 @@ Recall H2 Math probability Venn diagram: Negation[ P(A) = 1 - P(¬A) ], Inclusio
 Marginalisation[ P(A) = P(A ∧ B) + P(A ∧ ¬B) ] == Conditioning[ P(A) = P(A|B)P(B) + P(A|¬B)P(¬B) ] (re-arranging). if B has more possibilities, sum all possible B probability.
 
 Bayesian Network - data structure that represents the dependencies among random variable, it is implemented using a directed graph with each node representing a random variable
-and has the probability distribution: P(X|parents(X)); To calculate the joint probability, P(grandparents ∧ parents ∧ X) == P(grandparent)P(parent|grandparent)P(X|parent)
+and has the probability distribution: P(X|parents(X)); To calculate the joint probability, P(grandparent ∧ parent ∧ X) == P(grandparent)P(parent|grandparent)P(X|parent)
 
 Using Inference by Enumeration to find P(Query|Evidence) == k * P(Query ∧ Evidence), where k is a constant == 1/P(Evidence) and Evidence is already observed -> P(Evidence) known.
 Using Marginalisation, P(Query|Evidence) = k * P(Query ∧ Evidence) = k * Σ[ P(Query ∧ Evidence ∧ hidden variables) ] for all possible values of hidden variables.
