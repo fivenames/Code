@@ -8,10 +8,16 @@ Recall H2 Math probability Venn diagram: Negation[ P(A) = 1 - P(¬A) ], Inclusio
 Marginalisation[ P(A) = P(A ∧ B) + P(A ∧ ¬B) ] == Conditioning[ P(A) = P(A|B)P(B) + P(A|¬B)P(¬B) ] (re-arranging). if B has more possibilities, sum all possible B probability.
 
 Bayesian Network - data structure that represents the dependencies among random variable, it is implemented using a directed graph with each node representing a random variable
-and has the probability distribution: P(X|parents(X)); To calculate the joint probability, P(grandparent ∧ parent ∧ X) == P(grandparent)P(parent|grandparent)P(X|parent)
+and has the probability distribution: P(X|parents(X));
 
 Using Inference by Enumeration to find P(Query|Evidence) == k * P(Query ∧ Evidence), where k is a constant == 1/P(Evidence) and Evidence is already observed -> P(Evidence) known.
 Using Marginalisation, P(Query|Evidence) = k * P(Query ∧ Evidence) = k * Σ[ P(Query ∧ Evidence ∧ hidden variables) ] for all possible values of hidden variables.
+
+For P(A)P(B|A)P(C|B, A) = P(A) * P(B, A)/P(A) * P(C, B, A)/P(B, A) = P(C, B, A). Hence, to calculate the joint probability, P(C, B, A) == P(A)P(B|A)P(C|B, A).
+In essence, this works by the logic that the probability of C, B and A are all true is equal to the probability that A is true and B is true given that A is already true and so on.
+To calculate query Joint probability in the Baysian Network, P(X ∧ parent ∧ grandparent) == P(grandparent)P(parent|grandparent)P(X|parent); (Equivalent to multiplying each node) 
+Notice P(X|parent) does not include grandparent because X is not dependent on the grandparent, P(X|parent, grandparent) = P(X|parent), similarly P(A|B) = P(A) when
+X and grandparent are independent.
 '''
 
 

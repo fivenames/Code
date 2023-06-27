@@ -30,9 +30,9 @@ this model represents text as an unordered collection of words. When a specific 
 classified under that class. This approach tends to work quite well with classification such as good or bad sentiments/reviews.
 
 Another popular approach is the Naive Bayes approach, which is based on Baye's rule. Recall Baye's Rule: P(A|B) = P(B|A) * [ P(A) / P(B) ], 
-P(text is classA | text is "my grandson loved it.") = P(text|classA) * [ P(classA) / P(text) ] = k * P(classA) * P(text|classA) ----- Inference by Enumeration;
-P(classA|text) = k * P("my" ∧ "grandson" ∧ "loved" ∧ "it" | classA) * P(classA) = k * P("my" ∧ "grandson" ∧ "loved" ∧ "it" ∧ classA)
-To calculate the joint probability, P("my" ∧ "grandson" ∧ "loved" ∧ "it" ∧ classA); equivalent to a Baysian Network of a Node classA dependent on 4 Nodes of the respective words.
-P(classA)P("my"|classA)P("grandson"|"my" ∧ classA)P("loved"|"grandson" ∧ "my" ∧ classA)P("it"|"it" ∧ "grandson" ∧ "my" ∧ classA);
+P(text is classA | text is "my grandson loved it.") = P(text|classA) * [ P(classA) / P(text) ] = k * P(classA) * P(text|classA) 
+= k * P("my" ∧ "grandson" ∧ "loved" ∧ "it" | classA) * P(classA) = k * P("my" ∧ "grandson" ∧ "loved" ∧ "it" ∧ classA) ----- P(B|A) = P(B, A) / A;
+To calculate the joint probability, P("my" ∧ "grandson" ∧ "loved" ∧ "it" ∧ classA); equivalent to a Baysian Network of a Node classA dependent on 4 Nodes of the respective words;
+= P(classA)P("my"|classA)P("grandson"|"my" ∧ classA)P("loved"|"grandson" ∧ "my" ∧ classA)P("it"|"it" ∧ "grandson" ∧ "my" ∧ classA);
 
 '''
