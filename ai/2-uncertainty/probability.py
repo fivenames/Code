@@ -16,8 +16,8 @@ Using Marginalisation, P(Query|Evidence) = k * P(Query ∧ Evidence) = k * Σ[ P
 For P(A)P(B|A)P(C|B, A) = P(A) * P(B, A)/P(A) * P(C, B, A)/P(B, A) = P(C, B, A). Hence, to calculate the joint probability, P(C, B, A) == P(A)P(B|A)P(C|B, A).
 In essence, this works by the logic that the probability of C, B and A are all true is equal to the probability that A is true and B is true given that A is already true and so on.
 To calculate query Joint probability in the Baysian Network, P(X ∧ parent ∧ grandparent) == P(grandparent)P(parent|grandparent)P(X|parent); (Equivalent to multiplying each node) 
-Notice P(X|parent) does not include grandparent because X is not dependent on the grandparent, P(X|parent, grandparent) = P(X|parent), similarly P(A|B) = P(A) when
-X and grandparent are independent.
+Notice P(X|parent) does not include grandparent because X is not dependent on the grandparent, P(X|parent, grandparent) = P[(X|parent) | grandparent], P(A|B) = P(A) when
+A and B are independent.
 '''
 
 
