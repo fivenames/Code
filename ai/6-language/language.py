@@ -29,10 +29,15 @@ In a Text Categorization problem, which categorises texts into different classes
 this model represents text as an unordered collection of words. When a specific class contains texts with the specific word that the current text contains, the current text is
 classified under that class. This approach tends to work quite well with classification such as good or bad sentiments/reviews.
 
-Another popular approach is the Naive Bayes approach, which is based on Baye's rule. Recall Baye's Rule: P(A|B) = P(B|A) * [ P(A) / P(B) ], 
+A popular approach using this model is the Naive Bayes approach, which is based on the Baye's rule. Recall Baye's Rule: P(A|B) = P(B|A) * [ P(A) / P(B) ], 
 P(text is classA | text is "my grandson loved it.") = P(text|classA) * [ P(classA) / P(text) ] = k * P(classA) * P(text|classA) 
-= k * P("my" ∧ "grandson" ∧ "loved" ∧ "it" | classA) * P(classA) = k * P("my" ∧ "grandson" ∧ "loved" ∧ "it" ∧ classA) ----- P(B|A) = P(B, A) / A;
+= k * P("my" ∧ "grandson" ∧ "loved" ∧ "it" | classA) * P(classA) = k * P("my" ∧ "grandson" ∧ "loved" ∧ "it" ∧ classA) ----- P(B|A) = P(B, A) / A; P(B|A) * P(A) = P(B, A)
 To calculate the joint probability, P("my" ∧ "grandson" ∧ "loved" ∧ "it" ∧ classA); equivalent to a Baysian Network of a Node classA dependent on 4 Nodes of the respective words;
 = P(classA)P("my"|classA)P("grandson"|"my" ∧ classA)P("loved"|"grandson" ∧ "my" ∧ classA)P("it"|"it" ∧ "grandson" ∧ "my" ∧ classA);
 
+However, the listed joint probability is not something readily available, hence in the Naive Bayes approach, there is an assumption that words are independent of each other.
+Therefore, the computed joint probability became P(classA) * P("my"|classA) * P("grandson"|classA) * P("loved"|classA) * P("it"|classA);
+P(classA) = number of classA samples / Total; P("my"|classA) = number of class samples with "my" / Total; and so on...
+Finally, the joint probability of the other classes are computed as well, ie: P(classB) * P("my"|classB) * P("grandson"|classB) * P("loved"|classB) * P("it"|classB);
+All the joint probability is then normalised so that they sum up to 1.
 '''
