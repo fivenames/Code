@@ -58,7 +58,38 @@ def load_data(data_dir):
     be a list of integer labels, representing the categories for each of the
     corresponding `images`.
     """
-    raise NotImplementedError
+    images = []
+    lables = []
+    res = (images, lables)
+
+    for i in range(NUM_CATEGORIES):
+        j = 0
+        while(True):
+            file = f"00000_0000{i}.ppm"
+            path = os.path.join(data_dir, str(i), file)
+
+            image = cv2.imread(path)
+            if image is None:
+                break
+            
+            image = cv2.resize(image, (IMG_WIDTH, IMG_HEIGHT))
+            height, width, channel = image.shape
+            
+            if height != IMG_HEIGHT:
+                print("Image height not valid.")
+                quit()
+            if width != IMG_WIDTH:
+                print("Image width not valid.")
+                quit()
+            if channel != 3:
+                print("Image channel not valid.")
+                quit()
+            
+            images.append(image)
+            lables.append(i)
+            j += 1 
+
+    return res
 
 
 def get_model():
@@ -67,8 +98,29 @@ def get_model():
     `input_shape` of the first layer is `(IMG_WIDTH, IMG_HEIGHT, 3)`.
     The output layer should have `NUM_CATEGORIES` units, one for each category.
     """
-    raise NotImplementedError
+    model = tf.keras.models.Sequential([
 
+        # Convolution layer. Learn 32 filters using a 3 x 3 kernal.
+        tf.keras.layers.Conv2D(
+            32, (3, 3), activation="relu", input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)
+        ),
+
+        # Pooling. Using Max
+        tf.keras.layers.MaxPooling2D(
+            pool_size=(2, 2)
+        ),
+
+        tf.keras.layers.Flatten(),
+
+        # Hidden layer with 128 nodes.
+        tf.keras.layers.Dense(128, activation="relu"),
+        # Dropout to prevent overfitting.
+        tf.keras.layers.Dropout(0.5),
+
+        tf.keras.layers.Dense(NUM_CATEGORIES, activation="softmax")
+    ])
+
+    return model
 
 if __name__ == "__main__":
     main()
