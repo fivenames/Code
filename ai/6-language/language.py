@@ -38,6 +38,6 @@ To calculate the joint probability, P("my" ∧ "grandson" ∧ "loved" ∧ "it" �
 However, the listed joint probability is not something readily available, hence in the Naive Bayes approach, there is an assumption that words are independent of each other.
 Therefore, the computed joint probability became P(classA) * P("my"|classA) * P("grandson"|classA) * P("loved"|classA) * P("it"|classA);
 P(classA) = number of classA samples / Total; P("my"|classA) = number of class samples with "my" / Total; and so on...
-Finally, the joint probability of the other classes are computed as well, ie: P(classB) * P("my"|classB) * P("grandson"|classB) * P("loved"|classB) * P("it"|classB);
+Finally, the joint probability of the other classes are computed as well, ie: P(classB) * P("my"|classB) * P("grandson"|classB) * P("loved"|classB) * P("it"|classB); ...
 All the joint probability is then normalised so that they sum up to 1.
 '''
