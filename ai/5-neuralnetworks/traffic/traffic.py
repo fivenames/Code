@@ -78,11 +78,7 @@ def load_data(data_dir):
             labels.append(i)
             j += 1 
 
-    if images and labels:
-        return res
-    else:
-        print("empty list")
-        quit()
+    return res
 
 def get_model():
     """
