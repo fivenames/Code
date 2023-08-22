@@ -85,8 +85,8 @@ The network can then use these scores to determine the weight of each hidden sta
 This allows the model to focus on relevant parts of the input sequence when producing each output word.
 '''
 '''
-RNNs lack parallelism due to their dependency on previous hidden states for encoding and decoding. To overcome this limitation, the Transformer architecture was introduced. 
-In Transformers, each input word is processed independently. The process involves passing each word through self-attention layers, 
+Traditional RNNs lack parallelism due to their dependency on previous hidden states for encoding and decoding. To overcome this limitation, the Transformer architecture was introduced. 
+In Transformers, each input word is processed independently. In order to do that, the process involves passing each word through self-attention layers, 
 which capture contextual information by considering other words in the sequence, and a positional encoding which maintains the word order is passed through the NN.
 This parallel processing happens for each input word simultaneously.
 For decoding or generating outputs, Transformers employ an additional attention layer that focuses on the encoded representations of the input words. 
