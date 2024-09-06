@@ -1,4 +1,3 @@
-
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
@@ -87,19 +86,47 @@ public:
 
   // Checks whether the container contains the specified element
   bool contains(const T& element) const {
-    // TODO: Implement this method
+    Node* ptr = this -> m_head;
+    while(ptr != nullptr){
+      if(ptr -> element == element){
+        return true;
+      }
+      ptr = ptr -> next;
+    }  
     return false;
   }
 
   // Extracts the maximum element from the container
   T extract_max() {
-    // TODO: Implement this method
-    throw std::logic_error("extract_max not yet implemented");
+    T currMax = NULL;
+    Node* ptr = this -> m_head;
+    while(ptr != nullptr){
+      if(currMax == NULL || ptr -> element > currMax){
+        currMax = ptr -> element;
+      }
+      ptr = ptr -> next;
+    }
+    return currMax;
   }
 
   // Reverse the container
   void reverse() {
-    // TODO: Implement this method
+    Node* ptr = this -> m_head;
+    if(ptr -> next == nullptr){
+      return;
+    }
+
+    Node* prev = ptr;
+    Node* next = ptr -> next;
+    ptr -> next = nullptr;
+    while(next != nullptr){
+      ptr = next;
+      next = next -> next;
+      ptr -> next = prev;
+    }
+    
+    this -> m_head = ptr;
+    return;
   }
 
   // Returns a std::string equivalent of the container
