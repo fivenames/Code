@@ -4,8 +4,7 @@ using namespace std;
 
 Food Food:: operator+(const Food& rhs) const
 {
-    // modify this function
-    return Food("", 0);
+    return Food(this -> m_name + " " + rhs.m_name, this -> m_calories + rhs.m_calories);
 }
 
 
