@@ -1,0 +1,94 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7E60F382-E70D-4D9A-A72A-464C4EFE62F4}|Assignment 2 MSVS version.vcxproj|C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\linkedlist.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7E60F382-E70D-4D9A-A72A-464C4EFE62F4}|Assignment 2 MSVS version.vcxproj|solutionrelative:linkedlist.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E60F382-E70D-4D9A-A72A-464C4EFE62F4}|Assignment 2 MSVS version.vcxproj|C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\food.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7E60F382-E70D-4D9A-A72A-464C4EFE62F4}|Assignment 2 MSVS version.vcxproj|solutionrelative:food.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E60F382-E70D-4D9A-A72A-464C4EFE62F4}|Assignment 2 MSVS version.vcxproj|C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7E60F382-E70D-4D9A-A72A-464C4EFE62F4}|Assignment 2 MSVS version.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E60F382-E70D-4D9A-A72A-464C4EFE62F4}|Assignment 2 MSVS version.vcxproj|C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\food.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7E60F382-E70D-4D9A-A72A-464C4EFE62F4}|Assignment 2 MSVS version.vcxproj|solutionrelative:food.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 213,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "linkedlist.hpp",
+              "DocumentMoniker": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\linkedlist.hpp",
+              "RelativeDocumentMoniker": "linkedlist.hpp",
+              "ToolTip": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\linkedlist.hpp",
+              "RelativeToolTip": "linkedlist.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-09T16:13:47.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "food.h",
+              "DocumentMoniker": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\food.h",
+              "RelativeDocumentMoniker": "food.h",
+              "ToolTip": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\food.h",
+              "RelativeToolTip": "food.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-09T16:13:47.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-09T16:13:47.322Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 187,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "food.cpp",
+              "DocumentMoniker": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\food.cpp",
+              "RelativeDocumentMoniker": "food.cpp",
+              "ToolTip": "C:\\Users\\Fivenames\\Documents\\GitHub\\Code\\CS2040C\\2 - templates\\food.cpp",
+              "RelativeToolTip": "food.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-09T16:13:47.325Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
