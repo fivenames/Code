@@ -136,15 +136,33 @@ public:
     if(this -> m_head == nullptr){
       throw std::out_of_range("List is empty");
     }
-
     Node<T>* ptr = this -> m_head;
     T currMax = ptr -> element;
-    while(ptr != nullptr){
+    while(ptr != nullptr){ // find currMax
       if(ptr -> element > currMax){
         currMax = ptr -> element;
       }
+        ptr = ptr -> next;
+    }
+    
+    if(this -> m_head -> element == currMax){
+      this -> pop_head();
+      return currMax;
+    }
+    
+    Node<T>* prev = this -> m_head;
+    ptr = prev -> next;
+    while(ptr != nullptr){ // delete max
+      if(ptr -> element == currMax){
+        prev -> next = ptr -> next;
+        delete ptr;
+        this -> m_size--;
+        return currMax;
+      }
+      prev = prev -> next;
       ptr = ptr -> next;
     }
+    
     return currMax;
   }
 
