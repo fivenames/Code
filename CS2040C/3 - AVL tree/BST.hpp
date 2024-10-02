@@ -152,7 +152,26 @@ template <typename T> int Tree<T>::height() const {
 
 // Inserts an element
 template <typename T> void Tree<T>::insert(T element) {
-  // TODO: Implement this method
+  Node<T>* ptr = this -> m_root;
+  Node<T>* prev = ptr;
+  while(ptr != nullptr){
+    if(element < ptr -> element){
+      ptr = ptr -> left;
+    } else {
+      ptr = ptr -> righ;
+    }
+
+    if(ptr != nullptr){
+      prev = ptr;
+    }
+  }
+
+  ptr = new Node(element, 0, nullptr, nullptr);
+  if(element < prev -> element){
+    prev -> left = ptr;
+  } else {
+    prev -> right = ptr;
+  }
 }
 
 // Checks whether the container contains the specified element
