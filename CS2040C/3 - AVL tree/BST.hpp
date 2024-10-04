@@ -60,7 +60,13 @@ public:
   // Returns the height of the tree
   int height() const;
 
+  void _balanceNode(Node<T> *node);
+  void _updateNodeHeight(Node<T> *node);
+  void _rotateLeft(Node<T> *node);
+  void _rotateRight(Node<T> *node);
+
   // Inserts the specified element
+  Node<T>* _insert(T element, Node<T> *curr);
   void insert(T element);
 
   // Checks whether the container contains the specified element
@@ -150,9 +156,59 @@ template <typename T> int Tree<T>::height() const {
   return 0;
 }
 
+template <typename T>
+void Tree<T>::_balanceNode(Node<T> *node){
+  return;
+}
+
+template <typename T>
+void Tree<T>::_updateNodeHeight(Node<T> *node){
+  int leftHeight = -1;
+  int rightHeight = -1;
+  if(node -> left != nullptr){
+    leftHeight = node -> left ->height;
+  }
+  if(node -> right != nullptr){
+    rightHeight = node -> right -> height;
+  }
+  node -> height = std::max(leftHeight, rightHeight) + 1;
+  return;
+}
+
+template <typename T>
+void Tree<T>::_rotateLeft(Node<T> *node){
+  return;
+}
+
+template <typename T>
+void Tree<T>::_rotateRight(Node<T> *node){
+  return;
+}
+
 // Inserts an element
-template <typename T> void Tree<T>::insert(T element) {
-  // TODO: Implement this method
+template <typename T>
+Node<T>* Tree<T>::_insert(T element, Node<T> *curr) {
+  if(element < curr -> element && curr -> left == nullptr){
+    return new Node(element, 0);
+  } else if(element > curr -> element && curr -> right == nullptr){
+    return new Node(element, 0);
+  }
+
+  if(element < curr -> element){
+    curr -> left = Tree::insert(element, curr -> left);
+  } else {
+    curr -> right = Tree::insert(element, curr -> right);
+  }
+
+  Tree::_updateNodeHeight(curr);
+  Tree::_balanceNode(curr);
+  return curr;
+}
+
+template <typename T>
+void Tree<T>::insert(T element){
+  Tree::_insert(element, this -> m_root);
+  return;
 }
 
 // Checks whether the container contains the specified element
