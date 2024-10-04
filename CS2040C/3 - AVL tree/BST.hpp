@@ -47,6 +47,7 @@ public:
 
   // Destructor
   ~Tree();
+  void _deleteTree(Node<T> *curr);
 
   // Returns a pointer to the root
   Node<T> *root();
@@ -60,10 +61,11 @@ public:
   // Returns the height of the tree
   int height() const;
 
-  void _balanceNode(Node<T> *node);
+  Node<T>* _balanceNode(Node<T> *node);
   void _updateNodeHeight(Node<T> *node);
-  void _rotateLeft(Node<T> *node);
-  void _rotateRight(Node<T> *node);
+  Node<T>* _rotateLeft(Node<T> *node);
+  Node<T>* _rotateRight(Node<T> *node);
+  int _getNodeHeight(Node<T> *node);
 
   // Inserts the specified element
   Node<T>* _insert(T element, Node<T> *curr);
@@ -124,90 +126,129 @@ private:
 // Constructor
 template <typename T> Tree<T>::Tree() {
     m_root = nullptr;
-  // TODO: Implement this method
+    m_size = 0;
+}
+
+template <typename T> void Tree<T>::_deleteTree(Node<T> *curr){
+  if(curr == nullptr){
+    return;
+  }
+  _deleteTree(curr -> left);
+  _deleteTree(curr -> right);
+  delete(curr);
 }
 
 // Destructor
 template <typename T> Tree<T>::~Tree() {
-  // TODO: Implement this method
+  _deleteTree(this -> m_root);
 }
 
 // Returns a pointer to the root
 template <typename T> Node<T> *Tree<T>::root() {
-  // TODO: Implement this method
-  return nullptr;
+  return this -> m_root;
 }
 
 // Checks whether the tree is empty
 template <typename T> bool Tree<T>::empty() const {
-  // TODO: Implement this method
-  return true;
+  return (this -> m_size == 0);
 }
 
 // Returns the number of elements
 template <typename T> size_t Tree<T>::size() const {
-  // TODO: Implement this method
-  return 0;
+  return this -> m_size;
 }
 
 // Returns the height of the tree
 template <typename T> int Tree<T>::height() const {
-  // TODO: Implement this method
-  return 0;
+  if(this -> m_root == nullptr){
+    return -1;
+  }
+  return this -> m_root -> height;
 }
 
 template <typename T>
-void Tree<T>::_balanceNode(Node<T> *node){
-  return;
+Node<T>* Tree<T>::_rotateLeft(Node<T> *node){
+  Node<T> *w = node -> right;
+  node -> right = w -> left;
+  w -> left = node;
+
+  _updateNodeHeight(node);
+  _updateNodeHeight(w);
+  return w; // Return new root of the sub-tree
+}
+
+template <typename T>
+Node<T>* Tree<T>::_rotateRight(Node<T> *node){
+  Node<T> *w = node -> left;
+  node -> left = w -> right;
+  w -> right = node;
+
+  _updateNodeHeight(node);
+  _updateNodeHeight(w);
+  return w;
+}
+
+template <typename T>
+int Tree<T>::_getNodeHeight(Node<T> *node){
+  if(node == nullptr){
+    return -1;
+  }
+  return node -> height;
 }
 
 template <typename T>
 void Tree<T>::_updateNodeHeight(Node<T> *node){
-  int leftHeight = -1;
-  int rightHeight = -1;
-  if(node -> left != nullptr){
-    leftHeight = node -> left ->height;
-  }
-  if(node -> right != nullptr){
-    rightHeight = node -> right -> height;
-  }
+  int leftHeight = _getNodeHeight(node -> left);
+  int rightHeight = _getNodeHeight(node -> right);
   node -> height = std::max(leftHeight, rightHeight) + 1;
   return;
 }
 
 template <typename T>
-void Tree<T>::_rotateLeft(Node<T> *node){
-  return;
+Node<T>* Tree<T>::_balanceNode(Node<T> *node){ // Balance the sub-tree and return the new root
+  int leftHeight = _getNodeHeight(node -> left);
+  int rightHeight = _getNodeHeight(node -> right);
+  int balanceFactor = leftHeight - rightHeight;
+
+  if (balanceFactor > 1) {  // Left-heavy
+    Node<T>* child = node->left;
+    if (_getNodeHeight(child->right) > _getNodeHeight(child->left)) {
+      node->left = _rotateLeft(child); // Left-Right case
+    }
+    return _rotateRight(node);
+  } else if (balanceFactor < -1) {  // Right-heavy
+    Node<T>* child = node->right;
+    if (_getNodeHeight(child->left) > _getNodeHeight(child->right)) {
+      node->right = _rotateRight(child); // Right-Left case
+    }
+    return _rotateLeft(node);
+  }
+
+  return node; // Already balanced
 }
 
 template <typename T>
-void Tree<T>::_rotateRight(Node<T> *node){
-  return;
+Node<T>* Tree<T>::_insert(T element, Node<T> *curr) { // Backtrack each stack frame and balance the current sub-tree
+  if(curr == nullptr){
+    return new Node<T>(element, 0); // Create the node after reach the leaves
+  }
+
+  // Recrursively go down the tree
+  if(element < curr -> element){
+    curr -> left = _insert(element, curr -> left); // Receive the inserted and balanced sub-tree from the recursion stack
+  } else {
+    curr -> right = _insert(element, curr -> right);
+  }
+  _updateNodeHeight(curr); // Update each of the node height
+
+  return _balanceNode(curr); // Balance the sub-tree and return the new root
 }
 
 // Inserts an element
 template <typename T>
-Node<T>* Tree<T>::_insert(T element, Node<T> *curr) {
-  if(element < curr -> element && curr -> left == nullptr){
-    return new Node(element, 0);
-  } else if(element > curr -> element && curr -> right == nullptr){
-    return new Node(element, 0);
-  }
-
-  if(element < curr -> element){
-    curr -> left = Tree::insert(element, curr -> left);
-  } else {
-    curr -> right = Tree::insert(element, curr -> right);
-  }
-
-  Tree::_updateNodeHeight(curr);
-  Tree::_balanceNode(curr);
-  return curr;
-}
-
-template <typename T>
 void Tree<T>::insert(T element){
-  Tree::_insert(element, this -> m_root);
+  this -> m_root = _insert(element, this -> m_root);
+  this -> m_size++;
   return;
 }
 
