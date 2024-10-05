@@ -80,6 +80,7 @@ public:
   // Returns the minimum element
   T min() const;
 
+  T _min(Node<T> *node);
   // Returns the successor of the specified element
   T successor(T element);
 
@@ -87,9 +88,11 @@ public:
   string pre_order();
 
   // Convert each element in the tree to string in order.
+  string _in_order(Node<T> *node);
   string in_order();
 
   // Convert each element in the tree to string in post-order.
+  string _post_order(Node<T> *node);
   string post_order();
 
   // Returns a string equivalent of the tree
@@ -135,7 +138,7 @@ template <typename T> void Tree<T>::_deleteTree(Node<T> *curr){
   }
   _deleteTree(curr -> left);
   _deleteTree(curr -> right);
-  delete(curr);
+  delete curr;
 }
 
 // Destructor
@@ -253,27 +256,88 @@ void Tree<T>::insert(T element){
 }
 
 // Checks whether the container contains the specified element
-template <typename T> bool Tree<T>::contains(T element) const {
-  // TODO: Implement this method
+template <typename T> 
+bool Tree<T>::contains(T element) const {
+  Node<T> *ptr = this -> m_root;
+  while(ptr != nullptr){
+    if(element < ptr -> element){
+      ptr = ptr -> left;
+    } else if (element > ptr -> element) {
+      ptr = ptr -> right;
+    } else {
+      return true;
+    }
+  }
+
   return false;
 }
 
 // Returns the maximum element
-template <typename T> T Tree<T>::max() const {
-  // TODO: Implement this method
-  throw std::runtime_error("not implemented");
+template <typename T> 
+T Tree<T>::max() const {
+  Node<T> *ptr = this -> m_root;
+  if(ptr == nullptr){
+    throw std::out_of_range("empty tree");
+  }
+
+  while(ptr -> right != nullptr){
+    ptr = ptr -> right;
+  }
+
+  return ptr -> element;
 }
 
 // Returns the minimum element
 template <typename T> T Tree<T>::min() const {
-  // TODO: Implement this method
-  throw std::runtime_error("not implemented");
+  Node<T> *ptr = this -> m_root;
+  if(ptr == nullptr){
+    throw std::out_of_range("empty tree");
+  }
+
+  while(ptr -> left != nullptr){
+    ptr = ptr -> left;
+  }
+
+  return ptr -> element;
+}
+
+template <typename T> 
+T Tree<T>::_min(Node<T> *node){
+  Node<T> *ptr = node;
+  while(ptr -> left != nullptr){
+    ptr = ptr -> left;
+  }
+
+  return ptr -> element;
 }
 
 // Returns the successor of the specified element
-template <typename T> T Tree<T>::successor(T element) {
-  // TODO: Implement this method
-  throw std::runtime_error("not implemented");
+template <typename T> 
+T Tree<T>::successor(T element) {
+  Node<T> *ptr = this -> m_root;
+  if(ptr == nullptr){
+    throw std::out_of_range("empty tree");
+  }
+
+  T successor = ptr -> element; 
+  while(ptr != nullptr){
+    if(element > ptr -> element){
+      ptr = ptr -> right;
+    } else if(element < ptr -> element){
+      successor = ptr -> element; // Whenever move left, record the current sucessor
+      ptr = ptr -> left;
+    } else if(element == ptr -> element){ // Found the element
+      if(ptr -> right != nullptr){ // Find minimum of the right sub-tree if there exists
+        return _min(ptr -> right);
+      }
+      break;
+    }
+  }
+
+  if(successor <= element){
+    throw std::out_of_range("no successor");
+  }
+  return successor;
 }
 
 template <typename T>
@@ -292,15 +356,33 @@ string Tree<T>::pre_order() {
 }
 
 template <typename T>
+string Tree<T>::_in_order(Node<T> *node){
+  return (node -> left == nullptr ? "" : _in_order(node -> left) + " ")
+    + my_to_string(node -> element)
+    + (node -> right == nullptr ? "" : " " + _in_order(node -> right));
+}
+
+template <typename T>
 string Tree<T>::in_order() {
-  // TODO: Implement this method
-  return "";
+  if (m_root == nullptr) {
+    return "";
+  }
+  return _in_order(m_root);
+}
+
+template <typename T>
+string Tree<T>::_post_order(Node<T> *node){
+  return (node -> left == nullptr ? "" : _post_order(node -> left) + " ")
+    + (node -> right == nullptr ? "" : _post_order(node -> right) + " ") 
+    + my_to_string(node -> element);
 }
 
 template <typename T>
 string Tree<T>::post_order() {
-  // TODO: Implement this method
-  return "";
+  if (m_root == nullptr) {
+    return "";
+  }
+  return _post_order(m_root);
 }
 
 #endif
