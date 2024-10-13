@@ -144,6 +144,8 @@ template <typename T> void Tree<T>::_deleteTree(Node<T> *curr){
 // Destructor
 template <typename T> Tree<T>::~Tree() {
   _deleteTree(this -> m_root);
+  this -> m_size = 0;
+  this -> m_root = nullptr;
 }
 
 // Returns a pointer to the root
