@@ -136,9 +136,9 @@ void Heap<T>::changeKey(const T& from, const T& to) {
 
   this -> _heap[location] = to;
   if(from > to){ // decrease key
-    this -> _bubbleUp(location);
-  } else { // increase key
     this -> _bubbleDown(location);
+  } else { // increase key
+    this -> _bubbleUp(location);
   }
 
   return;
