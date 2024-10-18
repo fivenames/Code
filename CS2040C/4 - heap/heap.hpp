@@ -13,19 +13,23 @@ template <class T>
 class Heap {
  protected:
   T* _heap;
+  unsigned int _size;
+
 
  public:
-  Heap() { _heap = new T[DEFAULTHEAPSIZE]; }
+  Heap() {
+    _heap = new T[DEFAULTHEAPSIZE]; 
+    _size = 0;
+  }
 
   int size() const {
-    // TODO: implement this
-    return 0;
+    return this -> _size;
   }
 
   bool empty() const {
-    // TODO: implement this
-    return true;
+    return (this -> size() == 0);
   }
+  
   void insert(const T&);
   T extractMax();
   T peekMax() const;
@@ -33,25 +37,73 @@ class Heap {
   void printTree() const;
   void changeKey(const T& from, const T& to);
   void deleteItem(const T&);
+  void _bubbleUp(const unsigned int index);
+  void _bubbleDown(const unsigned int index);
 
   ~Heap() { delete[] _heap; };
 };
 
 template <class T>
+void Heap<T>::_bubbleUp(const unsigned int index){
+  if(index == 0){ // if reached root, return
+    return;
+  }
+
+  unsigned int parent_index = (index - 1) / 2; 
+  if(this -> _heap[parent_index] < this -> _heap[index]){ // if bigger than parent, swap and recursively bubble up
+    std::swap(this -> _heap[parent_index], this -> _heap[index]);
+    this -> _bubbleUp(parent_index);
+  } 
+
+  return;
+}
+
+template <class T>
+void Heap<T>::_bubbleDown(const unsigned int index) {
+  unsigned int left_child = 2 * index + 1;
+  unsigned int right_child = 2 * index + 2;
+  unsigned int largest = index; // store the largest node
+
+  if (left_child < this->_size && this->_heap[left_child] > this->_heap[largest]) { // if left child exists and is bigger, update largest
+    largest = left_child;
+  }
+  if (right_child < this->_size && this->_heap[right_child] > this->_heap[largest]) { // same for right
+    largest = right_child;
+  }
+
+  if (largest != index) { // if current node is not the largest, swap and recursively bubble down
+    std::swap(this->_heap[index], this->_heap[largest]);
+    this->_bubbleDown(largest);
+  }
+  return;
+}
+
+template <class T>
 void Heap<T>::insert(const T& item) {
-  // TODO: implement this
+  this -> _heap[this -> size()] = item;
+  this -> _size++; 
+  this -> _bubbleUp(this -> size() - 1);
+  
+  return;
 }
 
 template <class T>
 T Heap<T>::extractMax() {
-  // TODO: implement this
-  throw std::runtime_error("Not implemented");
+  if(this -> empty()){
+    throw std::out_of_range("empty heap");
+  }
+
+  this -> deleteItem(this -> _heap[0]);
+  return this -> _heap[this -> size()];
 }
 
 template <class T>
 T Heap<T>::peekMax() const {
-  // TODO: What happens if the heap is empty?
-  return _heap[0];
+  if(this -> empty()){
+    throw std::out_of_range("empty heap");
+  }
+
+  return this ->  _heap[0];
 };
 
 template <class T>
@@ -64,12 +116,61 @@ void Heap<T>::printHeapArray() const {
 
 template <class T>
 void Heap<T>::changeKey(const T& from, const T& to) {
-  // TODO: implement this
+  if(from == to){
+    return;
+  }
+  if(this -> empty()){
+    throw std::out_of_range("empty heap");
+  }
+
+  int location = -1;
+  for(int i = 0; i < this -> size(); i++){ // find the index of item to delete
+    if(this -> _heap[i] == from){
+      location = i;
+      break;
+    }
+  }
+  if(location == -1){
+    throw std::out_of_range("no such item in heap");
+  }
+
+  this -> _heap[location] = to;
+  if(from > to){ // decrease key
+    this -> _bubbleUp(location);
+  } else { // increase key
+    this -> _bubbleDown(location);
+  }
+
+  return;
 }
 
 template <class T>
 void Heap<T>::deleteItem(const T& x) {
-  // TODO: implement this
+  if(this -> empty()){
+    throw std::out_of_range("empty heap");
+  }
+
+  int location = -1;
+  for(int i = 0; i < this -> size(); i++){ // find the index of item to delete
+    if(this -> _heap[i] == x){
+      location = i;
+      break;
+    }
+  }
+  if(location == -1){
+    throw std::out_of_range("no such item in heap");
+  }
+
+  std::swap(this -> _heap[location], this -> _heap[this -> size() - 1]);
+  this -> _size--;
+  
+  T item = this -> _heap[location];
+  this -> _bubbleDown(location);
+  if(this -> _heap[location] == item){ // if the node did not bubble down, bubble up instead
+    this -> _bubbleUp(location);
+  }
+
+  return;
 }
 
 template <class T>

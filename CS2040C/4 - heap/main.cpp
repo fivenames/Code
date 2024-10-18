@@ -1,8 +1,8 @@
 // Assignment 4.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include "heap.hpp"
-#include "customer.h"
-#include "queue_simulator.h"
+//#include "customer.h"
+//#include "queue_simulator.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -14,28 +14,30 @@
 void heapTest0();
 void heapTest1();
 void heapTest2();
+void heapTest3();
 void heapTest4();
-void heapTest5();
+/*
 void simpleQueueTest0();
 void simpleQueueTest1();
 void simpleQueueTest2();
 void simpleQueueTest3();
 void simpleQueueTest4();
 void simpleQueueTest5();
+*/
 
 const vector<int> sample_array{ 3, -27, -26, -25, 8, -22, 16, -16, -3, -15, -13, -8, 25, -4, 29, 30 };
 
 int main()
-{
+{   
     heapTest0();
     heapTest1();
     heapTest2();
+    heapTest3();
     heapTest4();
-    //heapTest5(); 
-    // uncomment Test5 when you are done
     
     // write your own test cases for changeKey() and deleteKey()
-
+    
+    /*
     simpleQueueTest0();
     simpleQueueTest1();
     simpleQueueTest2();
@@ -44,18 +46,19 @@ int main()
     simpleQueueTest5();
 
     simpleQueueTest1();
+    */
 }
 
 
 void heapTest0() {
-    std::cout << "Check that default construct builds sane heap." << std::endl;
+    std::cout << "Check that default construct builds sane heap. Heap Test 0" << std::endl;
     Heap<int> heap;
     EXPECT_EQ(heap.size(), 0);
     EXPECT_TRUE(heap.empty());
 }
 
 void heapTest1() {
-    std::cout << "Check that calling insert with a single value works as expected." << std::endl;
+    std::cout << "Check that calling insert with a single value works as expected. Heap Test 1" << std::endl;
     Heap<int> heap;
     heap.insert(-1);
     EXPECT_EQ(heap.size(), 1);
@@ -64,7 +67,7 @@ void heapTest1() {
 }
 
 void heapTest2() {
-    std::cout << "heapTest1" << std::endl;
+    std::cout << "Heap Test 2" << std::endl;
     Heap<int> heap;
     heap.insert(5);
     EXPECT_EQ(heap.size(), 1);
@@ -86,12 +89,13 @@ vector<T> extract_all(Heap<T>& heap) {
     while (!heap.empty()) {
         elements.push_back(heap.extractMax());
     }
+
     return elements;
 }
 
 
-void heapTest4(){
-    std::cout << "Check that extract_max works correctly for various insertions." << std::endl;
+void heapTest3(){
+    std::cout << "Check that extract_max works correctly for various insertions. Heap Test 3" << std::endl;
     Heap<int> heap;
     for (const auto v : sample_array) {
         heap.insert(v);
@@ -102,8 +106,8 @@ void heapTest4(){
     EXPECT_EQ(elements, expected);
 }
 
-void heapTest5() {
-    std::cout <<  "Check that peek_max works correctly for various insertions." << std::endl;
+void heapTest4() {
+    std::cout <<  "Check that peek_max works correctly for various insertions. Heap Test 4" << std::endl;
 
     Heap<int> heap;
     for (const auto v : sample_array) {
@@ -122,8 +126,7 @@ void heapTest5() {
 
 
 
-
-
+/*
 void simpleQueueTest0() {
     std::cout << "Check that a single customer gets served." << std::endl;
     vector<Customer> customers = { Customer(0, 1) };
@@ -221,3 +224,4 @@ void simpleQueueTest5() {
     EXPECT_EQ(result[5].arrival_time(), 3);
     EXPECT_EQ(result[5].service_time(), 9);
 }
+*/
