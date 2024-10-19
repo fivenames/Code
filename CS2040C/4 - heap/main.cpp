@@ -1,8 +1,8 @@
 // Assignment 4.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include "heap.hpp"
-//#include "customer.h"
-//#include "queue_simulator.h"
+#include "customer.h"
+#include "queue_simulator.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -16,37 +16,35 @@ void heapTest1();
 void heapTest2();
 void heapTest3();
 void heapTest4();
-/*
+
 void simpleQueueTest0();
 void simpleQueueTest1();
 void simpleQueueTest2();
 void simpleQueueTest3();
 void simpleQueueTest4();
 void simpleQueueTest5();
-*/
+
 
 const vector<int> sample_array{ 3, -27, -26, -25, 8, -22, 16, -16, -3, -15, -13, -8, 25, -4, 29, 30 };
 
 int main()
 {   
+    /*
     heapTest0();
     heapTest1();
     heapTest2();
     heapTest3();
     heapTest4();
-    
+    */
     // write your own test cases for changeKey() and deleteKey()
     
-    /*
+    
     simpleQueueTest0();
     simpleQueueTest1();
     simpleQueueTest2();
     simpleQueueTest3();
-    simpleQueueTest4();
-    simpleQueueTest5();
-
-    simpleQueueTest1();
-    */
+    //simpleQueueTest4();
+    //simpleQueueTest5();
 }
 
 
@@ -126,7 +124,7 @@ void heapTest4() {
 
 
 
-/*
+
 void simpleQueueTest0() {
     std::cout << "Check that a single customer gets served." << std::endl;
     vector<Customer> customers = { Customer(0, 1) };
@@ -224,4 +222,3 @@ void simpleQueueTest5() {
     EXPECT_EQ(result[5].arrival_time(), 3);
     EXPECT_EQ(result[5].service_time(), 9);
 }
-*/

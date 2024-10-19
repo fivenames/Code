@@ -22,7 +22,7 @@ class Heap {
     _size = 0;
   }
 
-  int size() const {
+  unsigned int size() const {
     return this -> _size;
   }
 
@@ -64,15 +64,15 @@ void Heap<T>::_bubbleDown(const unsigned int index) {
   unsigned int right_child = 2 * index + 2;
   unsigned int largest = index; // store the largest node
 
-  if (left_child < this->_size && this->_heap[left_child] > this->_heap[largest]) { // if left child exists and is bigger, update largest
+  if (left_child < this -> _size && this -> _heap[left_child] > this -> _heap[largest]) { // if left child exists and is bigger, update largest
     largest = left_child;
   }
-  if (right_child < this->_size && this->_heap[right_child] > this->_heap[largest]) { // same for right
+  if (right_child < this -> _size && this -> _heap[right_child] > this -> _heap[largest]) { // same for right
     largest = right_child;
   }
 
   if (largest != index) { // if current node is not the largest, swap and recursively bubble down
-    std::swap(this->_heap[index], this->_heap[largest]);
+    std::swap(this -> _heap[index], this -> _heap[largest]);
     this->_bubbleDown(largest);
   }
   return;
