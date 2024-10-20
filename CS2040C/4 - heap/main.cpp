@@ -43,8 +43,8 @@ int main()
     simpleQueueTest1();
     simpleQueueTest2();
     simpleQueueTest3();
-    //simpleQueueTest4();
-    //simpleQueueTest5();
+    simpleQueueTest4();
+    simpleQueueTest5();
 }
 
 
