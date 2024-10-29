@@ -27,25 +27,53 @@ void simpleQueueTest5();
 
 const vector<int> sample_array{ 3, -27, -26, -25, 8, -22, 16, -16, -3, -15, -13, -8, 25, -4, 29, 30 };
 
+int calculate_average_wait_time(vector<Customer> customers){
+    int total_wait_time = 0;
+    for(auto customer : customers){
+        total_wait_time += customer.service_time();
+    }
+    return total_wait_time / customers.size();
+}
+
 int main()
 {   
-    /*
-    heapTest0();
-    heapTest1();
-    heapTest2();
-    heapTest3();
-    heapTest4();
-    */
-    // write your own test cases for changeKey() and deleteKey()
+    const vector<Customer> SAMPLE{
+        Customer(2, 10), Customer(3, 8), Customer(4, 2),
+        Customer(5, 3), Customer(8, 1), Customer(12, 2),
+    };
+    const vector<Customer> SAMPLE0{
+        Customer(2, 10), Customer(4, 2), Customer(8, 1),
+    };
+        const vector<Customer> SAMPLE1{
+        Customer(3, 8), Customer(5, 3), Customer(12, 2),
+    };
+
+    QueueSimulator sim;
+    QueueSimulator sim0;
+    QueueSimulator sim1;
+
+    sim.set_num_servers(2);
     
-    
-    simpleQueueTest0();
-    simpleQueueTest1();
-    simpleQueueTest2();
-    simpleQueueTest3();
-    simpleQueueTest4();
-    simpleQueueTest5();
+    auto result = sim.simulateQueue(SAMPLE);
+    std::cout << "average wait time for single FIFO queue: " << calculate_average_wait_time(result) << "\n";
+
+    sim.set_priority_order(true);
+    result = sim.simulateQueue(SAMPLE);
+    std::cout << "average wait time for single priority queue: " << calculate_average_wait_time(result) << "\n";
+
+    auto result0 = sim0.simulateQueue(SAMPLE0);
+    auto result1 = sim1.simulateQueue(SAMPLE1);
+    int sample_average = (calculate_average_wait_time(result0) + calculate_average_wait_time(result1)) / 2;
+    std::cout << "average wait time for multiple FIFO queue: " << sample_average << "\n";
+
+    sim0.set_priority_order(true);
+    sim1.set_priority_order(true);
+    result0 = sim0.simulateQueue(SAMPLE0);
+    result1 = sim1.simulateQueue(SAMPLE1);
+    sample_average = (calculate_average_wait_time(result0) + calculate_average_wait_time(result1)) / 2;
+    std::cout << "average wait time for multiple FIFO queue: " << sample_average << "\n";
 }
+
 
 
 void heapTest0() {

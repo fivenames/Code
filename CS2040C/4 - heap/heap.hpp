@@ -124,7 +124,7 @@ void Heap<T>::changeKey(const T& from, const T& to) {
   }
 
   int location = -1;
-  for(int i = 0; i < this -> size(); i++){ // find the index of item to delete
+  for(int i = 0; i < this -> size(); i++){ // find the index of item
     if(this -> _heap[i] == from){
       location = i;
       break;
