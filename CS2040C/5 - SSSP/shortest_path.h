@@ -1,6 +1,7 @@
 #ifndef __SHORTESTPATH_H__
 #define __SHORTESTPATH_H__
 
+#include "graph.h"
 #include <vector>
 
 // We should include graph.h here, but that causes problems with coursemology.
