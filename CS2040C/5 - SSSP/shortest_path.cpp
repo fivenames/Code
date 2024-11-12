@@ -1,6 +1,6 @@
 #include "graph.h"
 #include "shortest_path.h"
-#include "4 - heap/heap.hpp"
+#include "heap.hpp"
 
 // add all out going edges into priority queue
 void addOutGoingPaths(int v, const Graph& g, Heap<GraphEdge>& q, int* distance_arr){

@@ -31,6 +31,7 @@ class GraphEdge {
   int dest() const { return _dest; }
   int weight() const { return _weight; }
   bool operator>(const GraphEdge& e) const { return _weight > e._weight; }
+  bool operator<(const GraphEdge& e) const { return _weight < e._weight; }
   bool operator==(const GraphEdge& e) const { return _dest == e._dest; }
 };
 
@@ -58,7 +59,9 @@ class Graph {
   }
 
   // Add an edge from source vertex to dest vertex with weight weight
-  void addEdge(int source, int dest, int weight);
+  void addEdge(int source, int dest, int weight){
+    _vertices[source].push_front(GraphEdge(dest, weight));
+  }
 
   // Utility function to print graph to stdout
   void print() const;
