@@ -3,7 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "CS2040C/**"
             ],
             "defines": [
                 "_DEBUG",
