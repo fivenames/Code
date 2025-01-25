@@ -2,7 +2,8 @@
     "java.project.sourcePaths": [
         "java",
         "java\\basic-syntax",
-        "java\\datastruct"
+        "java\\datastruct",
+        "cs2113"
     ],
     "files.associations": {
         "array": "cpp",
@@ -55,5 +56,6 @@
         "text_encoding": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp"
-    }
+    },
+    "java.project.referencedLibraries": []
 }
